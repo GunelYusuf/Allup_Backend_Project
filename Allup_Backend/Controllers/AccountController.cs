@@ -64,6 +64,60 @@ namespace Allup_Backend.Controllers
             return Content(User.Identity.IsAuthenticated.ToString());
         }
 
+        public IActionResult LogIn()
+        {
+
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
+
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+
+        public async Task<IActionResult> LogIn(LoginVM login)
+        {
+            if (!ModelState.IsValid) return View();
+            AppUser dbUser = await _userManager.FindByNameAsync(login.UserName);
+
+            if (dbUser == null)
+            {
+                ModelState.AddModelError("", "UserName or Password wrong");
+                return View();
+            }
+
+            var signInResult = await _signInManager.PasswordSignInAsync(dbUser, login.Password, true, true);
+
+            if (dbUser.IsActive == false)
+            {
+                ModelState.AddModelError("", "User is Deactive");
+                return View();
+            }
+
+            if (signInResult.IsLockedOut)
+            {
+                ModelState.AddModelError("", "is LockOut");
+                return View();
+            }
+            if (!signInResult.Succeeded)
+            {
+                ModelState.AddModelError("", "UserName or Password wrong");
+                return View();
+            }
+
+            var roles = await _userManager.GetRolesAsync(dbUser);
+
+            if (roles[0] == "Admin")
+            {
+                return RedirectToAction("Index", "Dashboard", new { area = "AdminArea" });
+            }
+
+            return RedirectToAction("Index", "Home");
+        }
+
+
         public async Task<IActionResult> LogOut()
         {
             await _signInManager.SignOutAsync();

@@ -30,6 +30,7 @@
     <None Remove="Views\Shared\Components\" />
     <None Remove="Views\Shared\Components\Header\" />
     <None Remove="Views\Shared\Components\Footer\" />
+    <None Remove="MailKit" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -67,6 +68,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.0" />
+    <PackageReference Include="MailKit" Version="3.1.0" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />
