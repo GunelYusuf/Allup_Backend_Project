@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Allup_Backend.DAL;
+using Allup_Backend.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,6 +27,19 @@ namespace Allup_Backend
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddIdentity<AppUser, IdentityRole>(opt =>
+             {
+                 opt.Password.RequireLowercase = true;
+                 opt.Password.RequiredLength = 7;
+                 opt.Password.RequireNonAlphanumeric = true;
+
+                 opt.User.RequireUniqueEmail = true;
+
+                 opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+                 opt.Lockout.MaxFailedAccessAttempts = 4;
+                 opt.Lockout.AllowedForNewUsers = true;
+             }).AddEntityFrameworkStores<Context>().AddDefaultTokenProviders();
+
             services.AddControllersWithViews();
             services.AddDbContext<Context>(opt =>
             {

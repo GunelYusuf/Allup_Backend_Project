@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "dlDpEH4YsyoIY65r+Ek+zFANQ0W/3v6MDMdRT4fg4y+G+pDAtsyRPUcBUhMGFnjgEFt5t7nXIVMD0EK8TF9mgQ==",
+  "dgSpecHash": "O1vCdDYT3ss+C7dxmPtBFYD6gC4VQcAcmAxna/gLfD1jHYNZvJjV2CguonFGjyJ1HHcdvEW2JlYJntVXyuvSLA==",
   "success": true,
   "projectFilePath": "/Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/Allup_Backend.csproj",
   "expectedPackageFiles": [
+    "/Users/gunelyusubova/.nuget/packages/microsoft.aspnetcore.cryptography.internal/3.1.0/microsoft.aspnetcore.cryptography.internal.3.1.0.nupkg.sha512",
+    "/Users/gunelyusubova/.nuget/packages/microsoft.aspnetcore.cryptography.keyderivation/3.1.0/microsoft.aspnetcore.cryptography.keyderivation.3.1.0.nupkg.sha512",
     "/Users/gunelyusubova/.nuget/packages/microsoft.aspnetcore.html.abstractions/2.2.0/microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
+    "/Users/gunelyusubova/.nuget/packages/microsoft.aspnetcore.identity.entityframeworkcore/3.1.0/microsoft.aspnetcore.identity.entityframeworkcore.3.1.0.nupkg.sha512",
     "/Users/gunelyusubova/.nuget/packages/microsoft.aspnetcore.razor/2.2.0/microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
     "/Users/gunelyusubova/.nuget/packages/microsoft.aspnetcore.razor.language/3.1.0/microsoft.aspnetcore.razor.language.3.1.0.nupkg.sha512",
     "/Users/gunelyusubova/.nuget/packages/microsoft.aspnetcore.razor.runtime/2.2.0/microsoft.aspnetcore.razor.runtime.2.2.0.nupkg.sha512",
@@ -32,6 +35,8 @@
     "/Users/gunelyusubova/.nuget/packages/microsoft.extensions.configuration.binder/3.1.0/microsoft.extensions.configuration.binder.3.1.0.nupkg.sha512",
     "/Users/gunelyusubova/.nuget/packages/microsoft.extensions.dependencyinjection/3.1.0/microsoft.extensions.dependencyinjection.3.1.0.nupkg.sha512",
     "/Users/gunelyusubova/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/3.1.0/microsoft.extensions.dependencyinjection.abstractions.3.1.0.nupkg.sha512",
+    "/Users/gunelyusubova/.nuget/packages/microsoft.extensions.identity.core/3.1.0/microsoft.extensions.identity.core.3.1.0.nupkg.sha512",
+    "/Users/gunelyusubova/.nuget/packages/microsoft.extensions.identity.stores/3.1.0/microsoft.extensions.identity.stores.3.1.0.nupkg.sha512",
     "/Users/gunelyusubova/.nuget/packages/microsoft.extensions.logging/3.1.0/microsoft.extensions.logging.3.1.0.nupkg.sha512",
     "/Users/gunelyusubova/.nuget/packages/microsoft.extensions.logging.abstractions/3.1.0/microsoft.extensions.logging.abstractions.3.1.0.nupkg.sha512",
     "/Users/gunelyusubova/.nuget/packages/microsoft.extensions.options/3.1.0/microsoft.extensions.options.3.1.0.nupkg.sha512",

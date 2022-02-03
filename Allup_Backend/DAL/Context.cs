@@ -1,10 +1,11 @@
 ﻿using System;
 using Allup_Backend.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Allup_Backend.DAL
 {
-    public class Context:DbContext
+    public class Context:IdentityDbContext<AppUser>
     {
         public Context(DbContextOptions<Context> options):base(options)
         {
@@ -17,5 +18,7 @@ namespace Allup_Backend.DAL
         public DbSet<Product> Products { get; set; }
 
         public DbSet<ProductImage> ProductImages { get; set; }
+
+       
     }
 }

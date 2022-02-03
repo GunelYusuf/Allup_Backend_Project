@@ -23,6 +23,10 @@
     <None Remove="Microsoft.VisualStudio.Web.CodeGeneration.Design" />
     <None Remove="Areas\AdminArea\Views\Shared\" />
     <None Remove="Areas\AdminArea\Views\Dashboard\" />
+    <None Remove="ViewComponents\" />
+    <None Remove="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
+    <None Remove="ViewModels\" />
+    <None Remove="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -40,6 +44,9 @@
     <Folder Include="Areas\AdminArea\Views\Shared\" />
     <Folder Include="Areas\AdminArea\Views\Dashboard\" />
     <Folder Include="wwwroot\assets\admin\" />
+    <Folder Include="ViewComponents\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.0" />
@@ -53,6 +60,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.0" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />
