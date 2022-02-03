@@ -15,6 +15,14 @@
     <None Remove="Microsoft.EntityFrameworkCore.Tools" />
     <None Remove="Microsoft.EntityFrameworkCore.Design" />
     <None Remove="Views\Home\" />
+    <None Remove="Areas\" />
+    <None Remove="Areas\AdminArea\" />
+    <None Remove="Areas\AdminArea\Controller\" />
+    <None Remove="Areas\AdminArea\ViewModels\" />
+    <None Remove="Areas\AdminArea\Views\" />
+    <None Remove="Microsoft.VisualStudio.Web.CodeGeneration.Design" />
+    <None Remove="Areas\AdminArea\Views\Shared\" />
+    <None Remove="Areas\AdminArea\Views\Dashboard\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -24,6 +32,14 @@
     <Folder Include="DAL\" />
     <Folder Include="wwwroot\" />
     <Folder Include="Views\Home\" />
+    <Folder Include="Areas\" />
+    <Folder Include="Areas\AdminArea\" />
+    <Folder Include="Areas\AdminArea\Controllers\" />
+    <Folder Include="Areas\AdminArea\ViewModels\" />
+    <Folder Include="Areas\AdminArea\Views\" />
+    <Folder Include="Areas\AdminArea\Views\Shared\" />
+    <Folder Include="Areas\AdminArea\Views\Dashboard\" />
+    <Folder Include="wwwroot\assets\admin\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.0" />
@@ -36,8 +52,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />
+    <Content Remove="wwwroot\assets\admin\" />
   </ItemGroup>
 </Project>

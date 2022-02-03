@@ -1,20 +1,27 @@
 ﻿<Properties StartupConfiguration="{FA002A4D-51FE-4424-BB6B-7D33C5AA81D9}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Allup_Backend/Views/Home/Index.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Allup_Backend/Areas/AdminArea/Controllers/DashboardController.cs">
     <Files>
-      <File FileName="Allup_Backend/Startup.cs" Line="43" Column="34" />
-      <File FileName="Allup_Backend/Views/Shared/_Layout.cshtml" Line="1246" Column="1" />
-      <File FileName="Allup_Backend/Views/Home/Index.cshtml" Line="1" Column="1" />
+      <File FileName="Allup_Backend/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml" Line="18" Column="23" />
+      <File FileName="Allup_Backend/Areas/AdminArea/Controllers/DashboardController.cs" Line="9" Column="10" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Allup_Backend" expanded="True">
             <Node name="Allup_Backend" expanded="True">
-              <Node name="Controllers" expanded="True" />
-              <Node name="Views" expanded="True">
-                <Node name="Home" expanded="True">
-                  <Node name="Index.cshtml" selected="True" />
+              <Node name="Areas" expanded="True">
+                <Node name="AdminArea" expanded="True">
+                  <Node name="Controllers" expanded="True">
+                    <Node name="DashboardController.cs" selected="True" />
+                  </Node>
+                  <Node name="Views" expanded="True">
+                    <Node name="Dashboard" expanded="True" />
+                    <Node name="Shared" expanded="True" />
+                  </Node>
                 </Node>
+              </Node>
+              <Node name="wwwroot" expanded="True">
+                <Node name="assets" expanded="True" />
               </Node>
             </Node>
           </Node>
@@ -28,5 +35,5 @@
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.Allup__Backend FirstBuild="True" PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.ItemProperties.Allup__Backend PreferredExecutionTarget="/Applications/Google Chrome.app" />
 </Properties>

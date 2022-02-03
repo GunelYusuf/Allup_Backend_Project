@@ -46,6 +46,10 @@ namespace Allup_Backend
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                   "areas",
+                   "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
                     "default",
                     "{controller=Home}/{action=Index}/{id?}"
                     );
