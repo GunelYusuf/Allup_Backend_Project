@@ -19,6 +19,9 @@ namespace Allup_Backend.DAL
 
         public DbSet<ProductImage> ProductImages { get; set; }
 
-       
+        public DbSet<Bio> Bios { get; set; }
+
+        public DbSet<Footer> Footers { get; set; }
+
     }
 }
