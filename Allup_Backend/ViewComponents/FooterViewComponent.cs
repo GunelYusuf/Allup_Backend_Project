@@ -18,8 +18,8 @@ namespace Allup_Backend.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            Footer footer = _context.Footers.FirstOrDefault();
-            return View(await Task.FromResult(footer));
+            Contact contact = _context.Contacts.FirstOrDefault();
+            return View(await Task.FromResult(contact));
 
         }
     }

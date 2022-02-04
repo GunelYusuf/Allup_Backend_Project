@@ -7,7 +7,7 @@ namespace Allup_Backend.Models
 
          public string LogoUrl { get; set; }
 
-        public string PhoneNumber { get; set; }
+         public string PhoneNumber { get; set; }
 
     }
 }

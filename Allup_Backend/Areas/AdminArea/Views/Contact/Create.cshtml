@@ -1,0 +1,49 @@
+﻿@model Contact
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Default form</h4>
+                    <p class="card-description"> Create Contact Form </p>
+                    <form class="forms-sample" method="post">
+                        <div class="form-group">
+                            <label asp-for="Address"></label>
+                            <input asp-for="Address" class="form-control" placeholder="Address">
+                            <span class="text-danger" asp-validation-for="Address"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Description"></label>
+                            <textarea class="form-control" asp-for="Description" placeholder="Description"></textarea>
+                            <span class="text-danger" asp-validation-for="Description"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="PhoneNumber"></label>
+                            <textarea class="form-control" asp-for="PhoneNumber" placeholder="Phone"></textarea>
+                            <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="EmailAddress"></label>
+                            <textarea class="form-control" asp-for="EmailAddress" placeholder="Email"></textarea>
+                            <span class="text-danger" asp-validation-for="EmailAddress"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="OpenCloseClocks"></label>
+                            <textarea class="form-control" asp-for="OpenCloseClocks" placeholder="Clocks"></textarea>
+                            <span class="text-danger" asp-validation-for="OpenCloseClocks"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="MapUrl"></label>
+                            <textarea class="form-control" asp-for="MapUrl" placeholder="Map Url"></textarea>
+                            <span class="text-danger" asp-validation-for="MapUrl"></span>
+                        </div>
+                        <button class="btn btn-primary">Submit</button>
+                        <a asp-action="Index" class="btn btn-outline-warning">Go Back</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -55,8 +55,10 @@ namespace Allup_Backend
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseStaticFiles();
             app.UseRouting();
+            app.UseStaticFiles();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

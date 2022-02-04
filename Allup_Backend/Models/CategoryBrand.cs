@@ -1,5 +1,4 @@
-﻿using System;
-namespace Allup_Backend.Models
+﻿namespace Allup_Backend.Models
 {
     public class CategoryBrand
     {

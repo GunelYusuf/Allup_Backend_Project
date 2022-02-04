@@ -1,0 +1,21 @@
+﻿@model Contact
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <p>@Model.Address</p>
+            <p>@Model.EmailAddress</p>
+            <p>@Model.PhoneNumber</p>
+            <p>@Model.Description</p>
+            <p>@Model.MapUrl</p>
+            <p>@Model.OpenCloseClocks</p>
+        </div>
+
+        <div class="col-6">
+            <a asp-controller="Contact" asp-action="Index" class="btn btn-warning" style="color:white">Go Back</a>
+        </div>
+        <form class="forms-sample mt-3" method="Post">
+            <button class="btn btn-danger">Delete</button>
+        </form>
+    </div>
+</div>

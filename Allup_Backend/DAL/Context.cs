@@ -21,7 +21,7 @@ namespace Allup_Backend.DAL
 
         public DbSet<Bio> Bios { get; set; }
 
-        public DbSet<Footer> Footers { get; set; }
+        public  DbSet<Contact>  Contacts { get; set; }
 
         public DbSet<Blog> Blogs { get; set; }
 

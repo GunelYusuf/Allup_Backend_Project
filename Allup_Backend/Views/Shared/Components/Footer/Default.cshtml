@@ -1,4 +1,4 @@
-﻿@model Footer
+﻿@model Contact
 
 <section class="footer-area bg_cover" style="background-image: url(/assets/images/bg-footer.jpg)">
     <div class="footer-widget pt-30 pb-70">
@@ -9,10 +9,10 @@
                         <h4 class="footer-title">Contact Details</h4>
 
                         <ul>
-                            <li><i class="fas fa-map-marker-alt"></i> 45 Grand Central Terminal New York,NY 1017 United State USA</li>
+                            <li><i class="fas fa-map-marker-alt"></i>@Model.Address</li>
                             <li><i class="fas fa-phone"></i> <a href="tell:123-456-789">@Model.PhoneNumber</a></li>
                             <li><i class="fas fa-envelope"></i><a href="mailto://email@yourwebsitename.com">@Model.EmailAddress</a></li>
-                            <li><i class="far fa-clock"></i> Mon-Sat 9:00pm - 5:00pm Sun:Closed</li>
+                            <li><i class="far fa-clock"></i>@Model.OpenCloseClocks</li>
                         </ul>
                     </div> <!-- footer contact -->
                 </div>
@@ -71,7 +71,7 @@
         <div class="container">
             <div class="footer-copyright-payment text-center d-lg-flex justify-content-between align-items-center">
                 <div class="copyright-text">
-                    <p>Copyright 2020 &copy; <a href="https://hasthemes.com/">@Model.PoweredName</a> . All Rights Reserved</p>
+                    <p>Copyright 2020 &copy; <a href="https://hasthemes.com/">HasThemes</a> . All Rights Reserved</p>
                 </div>
                 <div class="payment">
                     <img src="~/assets/images/payment.png" alt="payment">
