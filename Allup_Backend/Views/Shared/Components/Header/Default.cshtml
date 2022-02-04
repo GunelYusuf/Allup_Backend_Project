@@ -10,6 +10,17 @@
                     </div>
                     <div class="header-menu-nav">
                         <ul class="menu-nav">
+                            <li>@ViewBag.UserName</li>
+                            <li>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <a asp-controller="Account" asp-action="LogOut">Log Out</a>
+                                }
+                                else
+                                {
+                                    <a asp-controller="Account" asp-action="LogIn">Log In</a>
+                                }
+                            </li>
                             <li><a href="compare.html"><i class="fal fa-repeat"></i> Compare (0)</a></li>
                             <li><a href="wishlist.html"><i class="fal fa-heart"></i> Wishlist(0)</a></li>
                             <li>
@@ -854,17 +865,6 @@
                         </ul>
                     </li>
                     <li><a href="contact.html">Contact</a></li>
-                    <li > @ViewBag.UserName</li>
-                    <li >
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <a asp-controller="Account" asp-action="LogOut">Log Out</a>
-                        }
-                        else
-                        {
-                            <a asp-controller="Account" asp-action="LogIn">Log In</a>
-                        }
-                   
                 </ul>
 
                 <ul class="menu-content">

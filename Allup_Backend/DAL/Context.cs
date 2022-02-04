@@ -29,5 +29,9 @@ namespace Allup_Backend.DAL
 
         public DbSet<CommentProduct> CommentProducts { get; set; }
 
+        public DbSet<CompanySlider> CompanySliders { get; set; }
+
+        public DbSet<ServicesSlider> ServicesSliders { get; set; }
+
     }
 }
