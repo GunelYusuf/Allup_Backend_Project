@@ -36,6 +36,7 @@
     <None Remove="Views\Shared\Components\CompanySlider\" />
     <None Remove="Areas\AdminArea\Views\CompanySlider\" />
     <None Remove="Extension\" />
+    <None Remove="Areas\AdminArea\Views\ServiceSlider\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -64,6 +65,7 @@
     <Folder Include="Views\Shared\Components\CompanyServices\" />
     <Folder Include="Areas\AdminArea\Views\CompanySlider\" />
     <Folder Include="Extension\" />
+    <Folder Include="Areas\AdminArea\Views\ServicesSlider\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.0" />

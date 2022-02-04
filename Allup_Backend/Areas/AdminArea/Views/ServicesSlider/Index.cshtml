@@ -1,0 +1,52 @@
+﻿@model IEnumerable<ServicesSlider>
+
+<div class="col-lg-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Hoverable Table</h4>
+            <p class="card-description">
+                <a class="btn btn-primary" asp-controller="ServicesSlider" asp-action="Create"> Create Service</a>
+            </p>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Settings</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>
+                            <img src="~/assets/images/banner-icon/@item.ImageUrl" style="width:50px; height:50px" />
+                        </td>
+                        <td>
+                            <p>@item.Title</p>
+                        </td>
+                       
+                        <td>
+                            <a asp-controller="ServicesSlider" asp-action="Update" asp-route-id="@item.Id" class="btn btn-success">
+                                <i class="icon-credit-card"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a asp-controller="ServicesSliderr" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-info">
+                                <i class="icon-info"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a asp-controller="ServicesSlider" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">
+                                <i class="icon-magnifier-remove"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

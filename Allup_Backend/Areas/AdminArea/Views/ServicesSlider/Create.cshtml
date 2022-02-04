@@ -1,0 +1,34 @@
+﻿@model ServicesSlider
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Default form</h4>
+                    <p class="card-description"> Create Services Slider Form </p>
+                    <form class="forms-sample" method="Post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label asp-for="Photo"></label>
+                            <input asp-for="Photo" class="form-control" accept="image/*" placeholder="Photo">
+                            <span class="text-danger" asp-validation-for="Photo"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Title"></label>
+                            <textarea class="form-control" asp-for="Title" placeholder="Title"></textarea>
+                            <span class="text-danger" asp-validation-for="Title"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Description"></label>
+                            <textarea class="form-control" asp-for="Description" placeholder="Description"></textarea>
+                            <span class="text-danger" asp-validation-for="Description"></span>
+                        </div>
+
+                        <button class="btn btn-primary">Submit</button>
+                        <button asp-action="Index" class="btn btn-outline-warning"> Go Back</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

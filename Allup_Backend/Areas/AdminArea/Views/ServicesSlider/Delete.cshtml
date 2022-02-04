@@ -1,0 +1,23 @@
+﻿@model ServicesSlider
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <img src="~/assets/images/banner-icon/@Model.ImageUrl" />
+        </div>
+        <div class="col-6">
+            <p>@Model.Title</p>
+            <p>@Model.Description</p>
+        </div>
+        <div class="col-6">
+            <a asp-controller="Slider" asp-action="Index" class="btn btn-warning" style="color:white">Go Back</a>
+        </div>
+        <form class="forms-sample mt-3" method="Post">
+            <button class="btn btn-danger">Delete</button>
+        </form>
+    </div>
+</div>

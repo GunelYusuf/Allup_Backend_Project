@@ -1,4 +1,5 @@
-﻿@model Contact
+﻿
+@model ServicesSlider
 @{
     ViewData["Title"] = "Detail";
 }
@@ -6,12 +7,9 @@
 <div class="container">
     <div class="row">
         <div class="col-6">
-            <p>@Model.Address</p>
-            <p>@Model.EmailAddress</p>
-            <p>@Model.PhoneNumber</p>
+            <img src="~/assets/images/banner-icon/@Model.ImageUrl" style="width:50px; height:50px" />
+            <p>@Model.Title</p>
             <p>@Model.Description</p>
-            <p>@Model.MapUrl</p>
-            <p>@Model.OpenCloseClocks</p>
         </div>
 
         <div class="col-6">

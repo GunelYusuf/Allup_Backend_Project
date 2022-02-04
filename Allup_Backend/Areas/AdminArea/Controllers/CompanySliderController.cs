@@ -30,7 +30,7 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
             List<CompanySlider> companySliders = _context.CompanySliders.ToList();
             return View(companySliders);
         }
-
+      
         //GET CompanySlider Create
         public IActionResult Create()
         {
