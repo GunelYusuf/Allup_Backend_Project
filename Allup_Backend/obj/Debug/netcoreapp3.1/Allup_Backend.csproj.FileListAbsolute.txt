@@ -6,6 +6,7 @@
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/bin/Debug/netcoreapp3.1/Allup_Backend.pdb
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/bin/Debug/netcoreapp3.1/Allup_Backend.Views.dll
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/bin/Debug/netcoreapp3.1/Allup_Backend.Views.pdb
+/Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/bin/Debug/netcoreapp3.1/MailKit.dll
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Razor.Language.dll
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/bin/Debug/netcoreapp3.1/Microsoft.Bcl.AsyncInterfaces.dll
@@ -30,8 +31,10 @@
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/bin/Debug/netcoreapp3.1/Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/bin/Debug/netcoreapp3.1/Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/bin/Debug/netcoreapp3.1/Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+/Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/bin/Debug/netcoreapp3.1/MimeKit.dll
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/bin/Debug/netcoreapp3.1/Newtonsoft.Json.dll
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/bin/Debug/netcoreapp3.1/NuGet.Frameworks.dll
+/Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/bin/Debug/netcoreapp3.1/BouncyCastle.Crypto.dll
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/bin/Debug/netcoreapp3.1/System.Composition.AttributedModel.dll
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/bin/Debug/netcoreapp3.1/System.Composition.Convention.dll
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/bin/Debug/netcoreapp3.1/System.Composition.Hosting.dll
@@ -115,8 +118,10 @@
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml.g.cs
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Areas/AdminArea/Views/_ViewImports.cshtml.g.cs
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Areas/AdminArea/Views/_ViewStart.cshtml.g.cs
+/Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Views/Account/ForgetPassword.cshtml.g.cs
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Views/Account/LogIn.cshtml.g.cs
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Views/Account/Register.cshtml.g.cs
+/Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Views/Account/ResetPassword.cshtml.g.cs
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Views/Home/Index.cshtml.g.cs
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Components/Footer/Default.cshtml.g.cs
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Components/Header/Default.cshtml.g.cs
@@ -130,3 +135,5 @@
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Allup_Backend.dll
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Allup_Backend.pdb
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Allup_Backend.genruntimeconfig.cache
+/Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/bin/Debug/netcoreapp3.1/Allup_Backend
+/Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Allup_Backend.csproj.AssemblyReference.cache

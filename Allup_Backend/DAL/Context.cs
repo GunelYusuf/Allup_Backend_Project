@@ -23,5 +23,11 @@ namespace Allup_Backend.DAL
 
         public DbSet<Footer> Footers { get; set; }
 
+        public DbSet<Blog> Blogs { get; set; }
+
+        public DbSet<CommentBlog> CommentBlogs { get; set; }
+
+        public DbSet<CommentProduct> CommentProducts { get; set; }
+
     }
 }

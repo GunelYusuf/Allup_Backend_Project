@@ -32,5 +32,7 @@ namespace Allup_Backend.Models
         public Brand Brand { get; set; }
 
         public int BrandId { get; set; }
+
+        public IEnumerable<CommentProduct> CommentProducts { get; set; }
     }
 }
