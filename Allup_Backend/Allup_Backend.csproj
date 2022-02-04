@@ -34,6 +34,8 @@
     <None Remove="Views\Contact\" />
     <None Remove="Areas\AdminArea\Views\Contact\" />
     <None Remove="Views\Shared\Components\CompanySlider\" />
+    <None Remove="Areas\AdminArea\Views\CompanySlider\" />
+    <None Remove="Extension\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -59,7 +61,9 @@
     <Folder Include="Views\Shared\Components\Footer\" />
     <Folder Include="Views\Contact\" />
     <Folder Include="Areas\AdminArea\Views\Contact\" />
-    <Folder Include="Views\Shared\Components\CompanySlider\" />
+    <Folder Include="Views\Shared\Components\CompanyServices\" />
+    <Folder Include="Areas\AdminArea\Views\CompanySlider\" />
+    <Folder Include="Extension\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.0" />
