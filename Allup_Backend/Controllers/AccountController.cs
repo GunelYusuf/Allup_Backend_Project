@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -31,25 +32,26 @@ namespace Allup_Backend.Controllers
         {
             return View();
         }
-
         [HttpPost]
         [AutoValidateAntiforgeryToken]
-
         public async Task<IActionResult> Register(RegisterVM register)
         {
             if (!ModelState.IsValid) return View();
+
             AppUser user = new AppUser
             {
                 FullName = register.FullName,
                 UserName = register.UserName,
-                Email = register.Email
+                Email = register.Email,
+                Subscribe = register.Subscribe
 
             };
-            // user.IsActive = true;
+            //user.IsActive = true;
             IdentityResult identityResult = await _userManager.CreateAsync(user, register.Password);
 
             if (!identityResult.Succeeded)
             {
+
                 foreach (var error in identityResult.Errors)
                 {
                     ModelState.AddModelError("", error.Description);
@@ -57,11 +59,53 @@ namespace Allup_Backend.Controllers
                 return View();
             }
 
+            string token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+
+            string link = Url.Action(nameof(VerifyEmail), "Account", new { email = user.Email, token }, Request.Scheme, Request.Host.ToString());
+
+            MailMessage mail = new MailMessage();
+
+            mail.From = new MailAddress("guntebrustemov@gmail.com", "AllUp");
+            mail.To.Add(new MailAddress(user.Email));
+            string html = string.Empty;
+            using (StreamReader reader = new StreamReader("wwwroot/assets/template/Email.html"))
+            {
+                html = reader.ReadToEnd();
+            }
+            mail.Body = html.Replace("{{link}}", link);
+            mail.Subject = "VerifyEmail";
+            mail.IsBodyHtml = true;
+            SmtpClient smtp = new SmtpClient();
+            smtp.Port = 587;
+            smtp.Host = "smtp.gmail.com";
+            smtp.EnableSsl = true;
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new NetworkCredential("guntebrustemov@gmail.com", "gunteb7@");
+            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtp.Send(mail);
+
+
             //await _userManager.AddToRoleAsync(user, "Member");
-            await _signInManager.SignInAsync(user, true);
+
+            TempData["Success"] = "Please confirm email";
 
             return RedirectToAction("Index", "Home");
         }
+
+
+
+        public async Task<IActionResult> VerifyEmail(string email, string token)
+        {
+
+            AppUser user = await _userManager.FindByEmailAsync(email);
+            await _userManager.ConfirmEmailAsync(user, token);
+
+            await _signInManager.SignInAsync(user, true);
+            TempData["Success"] = "Email confirmed";
+            return RedirectToAction("Index", "Home");
+        }
+        
+
 
         public IActionResult CheckSignIn()
         {
@@ -111,12 +155,12 @@ namespace Allup_Backend.Controllers
                 return View();
             }
 
-            var roles = await _userManager.GetRolesAsync(dbUser);
+            //var roles = await _userManager.GetRolesAsync(dbUser);
 
-            if (roles[0] == "Admin")
-            {
-                return RedirectToAction("Index", "Dashboard", new { area = "AdminArea" });
-            }
+            //if (roles[0] == "Admin")
+            //{
+            //    return RedirectToAction("Index", "Dashboard", new { area = "AdminArea" });
+            //}
 
             return RedirectToAction("Index", "Home");
         }

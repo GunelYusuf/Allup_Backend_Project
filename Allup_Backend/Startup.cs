@@ -29,6 +29,7 @@ namespace Allup_Backend
         {
             services.AddIdentity<AppUser, IdentityRole>(opt =>
              {
+                 opt.SignIn.RequireConfirmedEmail = true;
                  opt.Password.RequireLowercase = true;
                  opt.Password.RequiredLength = 7;
                  opt.Password.RequireNonAlphanumeric = true;
@@ -36,7 +37,7 @@ namespace Allup_Backend
                  opt.User.RequireUniqueEmail = true;
 
                  opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
-                 opt.Lockout.MaxFailedAccessAttempts = 4;
+                 opt.Lockout.MaxFailedAccessAttempts = 5;
                  opt.Lockout.AllowedForNewUsers = true;
              }).AddEntityFrameworkStores<Context>().AddDefaultTokenProviders();
 

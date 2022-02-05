@@ -13,6 +13,8 @@ namespace Allup_Backend.Models
 
         public bool IsActive { get; set; }
 
+        public bool Subscribe { get; set; }
+
         //public List<Sales> Sales { get; set; }
     }
 }

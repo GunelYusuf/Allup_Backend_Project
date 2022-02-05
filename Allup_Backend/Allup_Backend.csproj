@@ -66,6 +66,7 @@
     <Folder Include="Areas\AdminArea\Views\CompanySlider\" />
     <Folder Include="Extension\" />
     <Folder Include="Areas\AdminArea\Views\ServicesSlider\" />
+    <Folder Include="wwwroot\assets\template\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.0" />
@@ -85,5 +86,6 @@
   <ItemGroup>
     <Content Remove="wwwroot\" />
     <Content Remove="wwwroot\assets\admin\" />
+    <Content Remove="wwwroot\assets\template\" />
   </ItemGroup>
 </Project>

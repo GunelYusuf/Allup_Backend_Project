@@ -1,23 +1,24 @@
 ﻿@model LoginVM
-<!DOCTYPE html>
+
+<!--<!DOCTYPE html>
 <html lang="en">
-<head>
+<head>-->
     <!-- Required meta tags -->
-    <meta charset="utf-8">
+    <!--<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Stellar Admin</title>
+    <title>Stellar Admin</title>-->
     <!-- plugins:css -->
-    <link rel="stylesheet" href="~/assets/admin/vendors/simple-line-icons/css/simple-line-icons.css">
+    <!--<link rel="stylesheet" href="~/assets/admin/vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="~/assets/admin/vendors/flag-icon-css/css/flag-icon.min.css">
-    <link rel="stylesheet" href="~/assets/admin/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="~/assets/admin/vendors/css/vendor.bundle.base.css">-->
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
     <!-- Layout styles -->
-    <link rel="stylesheet" href="~/assets/admin/css/style.css" /> <!-- End layout styles -->
-    <link rel="shortcut icon" href="~/assets/admin/favicon.png" />
+    <!--<link rel="stylesheet" href="~/assets/admin/css/style.css" />--> <!-- End layout styles -->
+    <!--<link rel="shortcut icon" href="~/assets/admin/favicon.png" />
 </head>
 <body>
     <div class="container-scroller">
@@ -56,14 +57,14 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
             <!-- content-wrapper ends -->
-        </div>
+        <!--</div>-->
         <!-- page-body-wrapper ends -->
-    </div>
+    <!--</div>-->
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script src="../../vendors/js/vendor.bundle.base.js"></script>
+    <!--<script src="../../vendors/js/vendor.bundle.base.js"></script>-->
     <!-- endinject -->
     <!-- Plugin js for this page -->
     <!-- End plugin js for
@@ -71,8 +72,69 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
     this page -->
     <!-- inject:js -->
-    <script src="../../js/off-canvas.js"></script>
-    <script src="../../js/misc.js"></script>
+    <!--<script src="../../js/off-canvas.js"></script>
+    <script src="../../js/misc.js"></script>-->
     <!-- endinject -->
-</body>
-</html>
+<!--</body>
+</html>-->
+
+<div class="breadcrumb-area">
+    <div class="container-fluid custom-container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">Login</li>
+            </ol>
+        </nav>
+    </div>-->
+ <!-- container -->
+</div>
+
+<!--====== Breadcrumb Part Ends ======-->
+<!--====== Login Part Start ======-->
+<section class="login-area pt-10">
+    <div class="container-fluid custom-container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="login-register-wrapper mt-30">
+                    <h4 class="allup-title">Login to Your Account</h4>
+                     <form asp-controller="Account" asp-action="LogIn" method="post">
+                        <div class="single-form">
+                            <input asp-for="UserName" class="form-control form-control-lg" placeholder="UserName">
+                            <span asp-validation-for="UserName" class="text text-danger"></span>
+                        </div>
+                        <div class="single-form">
+                            <input asp-for="Password" class="form-control form-control-lg" placeholder="Password">
+                            <span asp-validation-for="Password" class="text text-danger"></span>
+                        </div>
+                        <div class="custom-checkbox mt-30">
+                            <input type="checkbox" id="account">
+                            <label for="account"></label>
+                            <p>Remember me</p>
+                        </div>
+                        <div class="single-form">
+                            <button class="main-btn main-btn-2">Login</button>
+                        </div>
+                    </form>
+                    <p class="mt-20"><a asp-controller="Account" asp-action="ForgetPassword">Lost your password?</a></p>
+                    <p class="mt-10">No account? <a asp-controller="Account" asp-action="Register">Create one here.</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!---->-->
+<!--@*@section Scripts{
+
+    <partial name="_Validation">
+
+}*@-->
+--><!----><!---->-->
+<!--====== Login Part Ends ======-->
+<!--====== Brand Part Start ======-->
+
+@await Component.InvokeAsync("CompanyServices");
+
+<!--====== Brand Part Ends ======-->
+<!--====== Features Banner Part Start ======-->
+<!--====== Features Banner Part Ends ======-->
