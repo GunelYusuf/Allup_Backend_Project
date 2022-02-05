@@ -1,0 +1,19 @@
+﻿@model About
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <img src="~/assets/images/@Model.ImageUrl" style="width:50px; height:50px" />
+            <p>@Model.Title</p>
+            <p>@Model.Description</p>
+
+        </div>
+
+        <div class="col-6">
+            <a asp-controller="About" asp-action="Index" class="btn btn-warning" style="color:white">Go Back</a>
+        </div>
+    </div>
+</div>

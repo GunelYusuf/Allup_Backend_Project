@@ -1,11 +1,11 @@
-﻿@model IEnumerable<ServicesSlider>
+﻿@model IEnumerable<About>
 
 <div class="col-lg-6 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">Hoverable Table</h4>
             <p class="card-description">
-                <a class="btn btn-primary" asp-controller="ServicesSlider" asp-action="Create"> Create Service</a>
+                <a class="btn btn-primary" asp-controller="About" asp-action="Create"> Create About</a>
             </p>
             <table class="table table-hover">
                 <thead>
@@ -20,24 +20,24 @@
                     {
                     <tr>
                         <td>
-                            <img src="~/assets/images/banner-icon/@item.ImageUrl" style="width:50px; height:50px" />
+                            <img src="~/assets/images/@item.ImageUrl" style="width:50px; height:50px" />
                         </td>
                         <td>
                             <p>@item.Title</p>
                         </td>
                        
                         <td>
-                            <a asp-controller="ServicesSlider" asp-action="Update" asp-route-id="@item.Id" class="btn btn-success">
+                            <a asp-controller="About" asp-action="Update" asp-route-id="@item.Id" class="btn btn-success">
                                 <i class="icon-credit-card"></i>
                             </a>
                         </td>
                         <td>
-                            <a asp-controller="ServicesSlider" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-info">
+                            <a asp-controller="About" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-info">
                                 <i class="icon-info"></i>
                             </a>
                         </td>
                         <td>
-                            <a asp-controller="ServicesSlider" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">
+                            <a asp-controller="About" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">
                                 <i class="icon-magnifier-remove"></i>
                             </a>
                         </td>
@@ -49,4 +49,3 @@
         </div>
     </div>
 </div>
-
