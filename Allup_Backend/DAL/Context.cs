@@ -37,5 +37,7 @@ namespace Allup_Backend.DAL
 
         public DbSet<BillingAddress> BillingAddresses { get; set; }
 
+        public DbSet<About> Abouts { get; set; }
+
     }
 }
