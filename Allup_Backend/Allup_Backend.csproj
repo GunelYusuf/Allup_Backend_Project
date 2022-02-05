@@ -40,6 +40,7 @@
     <None Remove="Views\Shared\Components\Subscribe\" />
     <None Remove="Areas\AdminArea\Views\User\" />
     <None Remove="Areas\AdminArea\Views\Role\" />
+    <None Remove="Areas\AdminArea\Views\Message\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -73,6 +74,7 @@
     <Folder Include="Views\Shared\Components\Subscribe\" />
     <Folder Include="Areas\AdminArea\Views\User\" />
     <Folder Include="Areas\AdminArea\Views\Role\" />
+    <Folder Include="Areas\AdminArea\Views\Message\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.0" />

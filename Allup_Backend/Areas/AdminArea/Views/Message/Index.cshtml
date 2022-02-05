@@ -1,0 +1,42 @@
+﻿@model IEnumerable<BillingAddress>
+
+<div class="col-lg-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Contact Table</h4>
+            <p class="card-description">
+              
+            </p>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Subject</th>
+                        <th>Text</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>@item.User.UserName</td>
+                        <td>@item.Subject</td>
+                        <td>@item.Text</td>
+                        <td>
+                            <a asp-controller="Message" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-info">
+                                <i class="icon-info"></i>
+                            </a>
+                            <a asp-controller="Message" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">
+                                <i class="icon-magnifier-remove"></i>
+                            </a>
+
+                        </td>
+                    </tr>
+                     }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

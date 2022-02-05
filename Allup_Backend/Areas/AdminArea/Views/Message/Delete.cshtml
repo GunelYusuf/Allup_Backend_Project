@@ -1,0 +1,19 @@
+﻿@model BillingAddress
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <p>@Model.User.UserName</p>
+            <p>@Model.Subject</p>
+            <p>@Model.Text</p>
+
+        </div>
+
+        <form class="forms-sample mt-3" method="Post">
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+        <div class="col-6">
+            <a asp-controller="Message" asp-action="Index" class="btn btn-warning" style="color:white">Go Back</a>
+        </div>
+    </div>
+</div>
