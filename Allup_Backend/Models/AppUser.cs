@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity;
 
@@ -14,6 +15,8 @@ namespace Allup_Backend.Models
         public bool IsActive { get; set; }
 
         public bool Subscribe { get; set; }
+
+        public List<BillingAddress> billingAddresses { get; set; }
 
         //public List<Sales> Sales { get; set; }
     }

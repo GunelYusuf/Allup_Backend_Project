@@ -19,13 +19,13 @@ namespace Allup_Backend.Controllers
 
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
-        //private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
         public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            //_roleManager = roleManager;
+            _roleManager = roleManager;
         }
 
         public IActionResult Register()
@@ -85,7 +85,7 @@ namespace Allup_Backend.Controllers
             smtp.Send(mail);
 
 
-            //await _userManager.AddToRoleAsync(user, "Member");
+            await _userManager.AddToRoleAsync(user, "Admin");
 
             TempData["Success"] = "Please confirm email";
 
@@ -114,7 +114,6 @@ namespace Allup_Backend.Controllers
 
         public IActionResult LogIn()
         {
-
             if (User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Home");
@@ -155,12 +154,12 @@ namespace Allup_Backend.Controllers
                 return View();
             }
 
-            //var roles = await _userManager.GetRolesAsync(dbUser);
+            var roles = await _userManager.GetRolesAsync(dbUser);
 
-            //if (roles[0] == "Admin")
-            //{
-            //    return RedirectToAction("Index", "Dashboard", new { area = "AdminArea" });
-            //}
+            if (roles[0] == "Admin")
+            {
+                return RedirectToAction("Index", "Dashboard", new { area = "AdminArea" });
+            }
 
             return RedirectToAction("Index", "Home");
         }
@@ -178,17 +177,17 @@ namespace Allup_Backend.Controllers
         }
 
 
-        //public async Task CreateRole()
-        //{
-        //    if (!await _roleManager.RoleExistsAsync("Admin"))
-        //    {
-        //        await _roleManager.CreateAsync(new IdentityRole { Name = "Admin" });
-        //    }
-        //    if (!await _roleManager.RoleExistsAsync("Member"))
-        //    {
-        //        await _roleManager.CreateAsync(new IdentityRole { Name = "Member" });
-        //    }
-        //}
+        public async Task CreateRole()
+        {
+            if (!await _roleManager.RoleExistsAsync("Admin"))
+            {
+                await _roleManager.CreateAsync(new IdentityRole { Name = "Admin" });
+            }
+            if (!await _roleManager.RoleExistsAsync("Member"))
+            {
+                await _roleManager.CreateAsync(new IdentityRole { Name = "Member" });
+            }
+        }
 
         public IActionResult ForgetPassword()
         {

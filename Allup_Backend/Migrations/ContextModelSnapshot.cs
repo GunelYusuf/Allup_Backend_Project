@@ -95,6 +95,29 @@ namespace Allup_Backend.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("Allup_Backend.Models.BillingAddress", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Subject")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("BillingAddresses");
+                });
+
             modelBuilder.Entity("Allup_Backend.Models.Bio", b =>
                 {
                     b.Property<int>("Id")
@@ -384,6 +407,21 @@ namespace Allup_Backend.Migrations
                     b.ToTable("ServicesSliders");
                 });
 
+            modelBuilder.Entity("Allup_Backend.Models.Subscribe", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Subscribes");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -513,6 +551,13 @@ namespace Allup_Backend.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("Allup_Backend.Models.BillingAddress", b =>
+                {
+                    b.HasOne("Allup_Backend.Models.AppUser", "User")
+                        .WithMany("billingAddresses")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Allup_Backend.Models.Blog", b =>

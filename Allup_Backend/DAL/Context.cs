@@ -33,5 +33,9 @@ namespace Allup_Backend.DAL
 
         public DbSet<ServicesSlider> ServicesSliders { get; set; }
 
+        public DbSet<Subscribe> Subscribes { get; set; }
+
+        public DbSet<BillingAddress> BillingAddresses { get; set; }
+
     }
 }

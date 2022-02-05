@@ -1,0 +1,74 @@
+﻿@model IEnumerable<AppUser>
+
+
+<div class="col-lg-6 grid-margin stretch-card">
+    <form method="get" action="Index">
+        <input type="text" placeholder="search" name="name" />
+        <input type="submit" value="search" />
+    </form>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">User Table</h4>
+            <p class="card-description">
+                <a class="btn btn-primary" asp-controller="User" asp-action="Create"> Create User</a>
+            </p>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>FullName</th>
+                        <th>Email</th>
+                        <th>UserName</th>
+                        <th>Active</th>
+                        <th>Settings</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.FullName</td>
+                            <td>@item.Email</td>
+                            <td>@item.UserName</td>
+                            @if (User.Identity.Name == item.UserName)
+                            {
+                                <td>if you can't deactivate yourself</td>
+
+                            }
+                            else
+                            {
+                                @if (!item.IsActive)
+                                {
+                                    <td> <a asp-controller="User" asp-action="IsActive" asp-route-id="@item.Id" class="btn btn-danger">Deactive</a></td>
+
+                                }
+                                else
+                                {
+                                    <td> <a asp-controller="User" asp-action="IsActive" asp-route-id="@item.Id" class="btn btn-success">Active</a></td>
+
+                                }
+                            }
+                            <td>
+                                <a asp-controller="User" asp-action="Update" asp-route-id="" class="btn btn-success">
+                                    <i class="icon-credit-card"></i>
+                                </a>
+
+                                <a asp-controller="User" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-info">
+                                    <i class="icon-info"></i>
+                                </a>
+
+                                <a asp-controller="User" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">
+                                    <i class="icon-magnifier-remove"></i>
+                                </a>
+                                <a asp-controller="Role" asp-action="Update" asp-route-id="@item.Id" class="btn btn-warning">
+                                    Change Role
+                                </a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+ </div>

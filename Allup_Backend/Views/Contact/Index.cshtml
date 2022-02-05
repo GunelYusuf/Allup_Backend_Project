@@ -1,9 +1,8 @@
-﻿@model Contact
-
+﻿@model ContactVM
 <!--====== Contact PART START ======-->
 
 <div class="contact-map-area pt-50">
-    <div id="contact-map">@Model.MapUrl</div>
+    <div id="contact-map"></div>
 </div>
 
 <!--====== Contact PART ENDS ======-->
@@ -15,26 +14,47 @@
             <div class="col-lg-7 col-xl-8">
                 <div class="contact-form mt-30">
                     <h4 class="allup-title">Billing Address</h4>
-                    <form id="contact-form" action="https://demo.hasthemes.com/allup/allup/~/assets/contact.php" method="POST">
+                    <form id="contact-form" asp-controller="Contact" asp-action="Create" method="POST">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="single-form">
-                                    <input type="text" name="name" placeholder="Your Name">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
+
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+                                        <input type="text" asp-for="@Model.User.FullName" name="FullName" placeholder="Your Name" disabled>
+                                    }
+                                    else
+                                    {
+                                        <input type="text" name="name" placeholder="Your Name">
+                                    }
+
+                                 </div>
+                              </div>
+                                <div class="col-md-6">
+                                   <div class="single-form">
+
+                                    @if (User.Identity.IsAuthenticated)
+                                     {
+                                     <input type="email" asp-for="@Model.User.Email" name="Email" placeholder="Your Email" disabled>
+                                     }
+                                      else
+                                      {
+                                       <input type="email" name="email" placeholder="Your Email">
+                                      }
+
+                                     </div>
+                                 </div>
+
+                            
+
+                            <div class="col-md-12">
                                 <div class="single-form">
-                                    <input type="email" name="email" placeholder="Your Email">
+                                    <input asp-for="@Model.BillingAddresses.Subject" type="text" name="Subject" placeholder="Subject">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="single-form">
-                                    <input type="text" name="subject" placeholder="Subject">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="single-form">
-                                    <textarea name="message" placeholder="Your Message"></textarea>
+                                    <textarea name="Text" asp-for="@Model.BillingAddresses.Text" placeholder="Your Message"></textarea>
                                 </div>
                             </div>
                             <p class="form-message"></p>
@@ -50,7 +70,7 @@
             <div class="col-lg-5 col-xl-4">
                 <div class="contact-info mt-30">
                     <h4 class="title">Contact Us</h4>
-                    <p class="text">@Model.Description</p>
+                    <p class="text">@Model.Contact.Description</p>
 
                     <ul class="contact-info-block">
                         <li>
@@ -61,7 +81,7 @@
                                     </div>
                                     <h5 class="info-title media-body">Address</h5>
                                 </div>
-                                <p>@Model.Address</p>
+                                <p>@Model.Contact.Address</p>
                             </div>
                         </li>
                         <li>
@@ -72,7 +92,7 @@
                                     </div>
                                     <h5 class="info-title media-body">Phone</h5>
                                 </div>
-                                <p>Mobile:@Model.PhoneNumber</p>
+                                <p>Mobile:@Model.Contact.PhoneNumber</p>
                                 <p>Hotline: 1009 678 456</p>
                             </div>
                         </li>
@@ -84,7 +104,7 @@
                                     </div>
                                     <h5 class="info-title media-body">Email</h5>
                                 </div>
-                                <p>@Model.EmailAddress</p>
+                                <p>@Model.Contact.EmailAddress</p>
                                 <p>support@hastech.company</p>
                             </div>
                         </li>
@@ -96,3 +116,15 @@
 </section>
 
 <!--====== Contact Part Ends ======-->
+
+
+<!--====== Features Brand Banner Part Start ======-->
+
+@await Component.InvokeAsync("CompanyServices");
+
+<!--====== Features Banner Part Ends ======-->
+<!--====== Newsletter Part Start ======-->
+
+@await Component.InvokeAsync("Subscribe");
+
+<!--====== Newsletter Part Ends ======-->

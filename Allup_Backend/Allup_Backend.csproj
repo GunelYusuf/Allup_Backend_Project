@@ -37,6 +37,9 @@
     <None Remove="Areas\AdminArea\Views\CompanySlider\" />
     <None Remove="Extension\" />
     <None Remove="Areas\AdminArea\Views\ServiceSlider\" />
+    <None Remove="Views\Shared\Components\Subscribe\" />
+    <None Remove="Areas\AdminArea\Views\User\" />
+    <None Remove="Areas\AdminArea\Views\Role\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -67,6 +70,9 @@
     <Folder Include="Extension\" />
     <Folder Include="Areas\AdminArea\Views\ServicesSlider\" />
     <Folder Include="wwwroot\assets\template\" />
+    <Folder Include="Views\Shared\Components\Subscribe\" />
+    <Folder Include="Areas\AdminArea\Views\User\" />
+    <Folder Include="Areas\AdminArea\Views\Role\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.0" />

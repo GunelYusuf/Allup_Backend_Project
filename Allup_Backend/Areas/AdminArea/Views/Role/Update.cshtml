@@ -1,0 +1,13 @@
+﻿@using Allup_Backend.ViewModels
+@model UpdateRoleVM
+
+
+<h1>@Model.User.FullName</h1>
+
+<form method="post">
+    @foreach (var role in Model.Roles)
+    {
+        <input @(Model.UserRoles.Contains(role.Name) ? "checked =\"checked\"" : "") type="checkbox" name="roles" value="@role.Name" /> @role.Name <br />
+    }
+    <button type="submit">Change</button>
+</form>
