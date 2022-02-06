@@ -39,5 +39,7 @@ namespace Allup_Backend.DAL
 
         public DbSet<About> Abouts { get; set; }
 
+        public DbSet<AuthorSlider> AuthorSliders { get; set; }
+
     }
 }
