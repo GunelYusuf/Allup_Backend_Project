@@ -43,6 +43,7 @@
     <None Remove="Areas\AdminArea\Views\Message\" />
     <None Remove="Views\About\" />
     <None Remove="Areas\AdminArea\Views\About\" />
+    <None Remove="Areas\AdminArea\Views\AuthorSlider\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -79,6 +80,7 @@
     <Folder Include="Areas\AdminArea\Views\Message\" />
     <Folder Include="Views\About\" />
     <Folder Include="Areas\AdminArea\Views\About\" />
+    <Folder Include="Areas\AdminArea\Views\AuthorSlider\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.0" />
