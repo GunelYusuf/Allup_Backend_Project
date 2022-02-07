@@ -14,6 +14,10 @@ namespace Allup_Backend.Models
 
         public bool IsMain { get; set; }
 
+        public bool IsFeatured { get; set; }
+
+        public bool IsDeleted { get; set; }
+
         public Category Parent { get; set; }
 
         public List<Category> Children { get; set; }
@@ -21,7 +25,7 @@ namespace Allup_Backend.Models
         public string ImageUrl { get; set; }
 
         [NotMapped]
-        public IFormFile CategoryImage { get; set; }
+        public IFormFile Photo { get; set; }
 
         public ICollection<CategoryBrand> CategoryBrands { get; set; }
 

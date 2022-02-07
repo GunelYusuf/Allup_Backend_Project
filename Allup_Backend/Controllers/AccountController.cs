@@ -139,7 +139,7 @@ namespace Allup_Backend.Controllers
 
             if (dbUser.IsActive == false)
             {
-                ModelState.AddModelError("", "User is Deactive");
+                ModelState.AddModelError("", "User is deactive");
                 return View();
             }
 

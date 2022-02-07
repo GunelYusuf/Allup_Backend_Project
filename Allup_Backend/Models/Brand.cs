@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Allup_Backend.Models
 {
@@ -7,6 +8,7 @@ namespace Allup_Backend.Models
     {
         public int Id { get; set; }
 
+        [Required(ErrorMessage = "can not be empty")]
         public string Name { get; set; }
 
         public ICollection<CategoryBrand> CategoryBrands{ get; set; }
