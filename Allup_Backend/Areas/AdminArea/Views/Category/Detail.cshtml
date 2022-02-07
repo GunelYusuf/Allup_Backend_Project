@@ -1,0 +1,20 @@
+﻿@model Category
+
+<h1>Details</h1>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <img src="~/assets/images/@Model.ImageUrl" style="width:50px; height:50px" />
+            <p>@Model.Name</p>
+            <p>@Model.IsMain</p>
+            <p>@Model.IsFeatured</p>
+
+        </div>
+
+        <div class="col-6">
+            <a asp-controller="Category" asp-action="Index" class="btn btn-warning" style="color:white">Go Back</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+﻿@model Category
+
+<h3>Update</h3>
+
+<h4>Category</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @if (Model.IsMain)
+        {
+            <img src="~/assets/images/@Model.ImageUrl" alt="Alternate Text" style="width:80px;height:80px" />
+        }
+        <form asp-action="Update" enctype="multipart/form-data" method="Post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check" style="display:none">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsMain" disabled /> @Html.DisplayNameFor(model => model.IsMain)
+                </label>
+
+            </div>
+            @if (Model.IsMain)
+            {
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="IsFeatured" /> @Html.DisplayNameFor(model => model.IsFeatured)
+                    </label>
+                </div>
+            }
+
+            @if (!Model.IsMain)
+            {
+                <div class="form-group">
+                    <select asp-for="Parent.Id" id="category">
+                        <option selected>Selected Main Category</option>
+                        @foreach (var item in ViewBag.Category)
+                        {
+                            <option value="@item.Id">
+                                @item.Name
+                            </option>
+                        }
+
+
+                    </select>
+                </div>
+            }
+
+            @if (Model.IsMain)
+            {
+                <div class="form-group" id="photodiv">
+                    <label asp-for="Photo"></label>
+                    <input asp-for="Photo" class="form-control" accept="image/*" placeholder="Photo">
+                    <span asp-validation-for="Photo" class="text-danger"></span>
+                </div>
+            }
+
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-success" />
+            <button asp-action="Index" class="btn btn-warning"> Go Back</button>
+        </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
