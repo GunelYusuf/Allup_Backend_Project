@@ -1,0 +1,18 @@
+﻿@model AuthorSlider
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <img src="~/assets/images/@Model.ImageUrl" style="width:70px; height:70px" />
+            <p>@Model.AuthorName</p>
+            <p>@Model.Description</p>
+            <p>@Model.Email</p>
+        </div>
+        <div class="col-6">
+            <a asp-controller="AuthorSlider" asp-action="Index" class="btn btn-warning" style="color:white">Go Back</a>
+        </div>
+    </div>
+</div>

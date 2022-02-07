@@ -10,6 +10,7 @@
                     </div>
                     <div class="header-menu-nav">
                         <ul class="menu-nav">
+                             <a class="btn btn-info" style="color:whitesmoke" asp-area="AdminArea" asp-controller="Dashboard" asp-action="Index">Admin Area</a>
                             <li>@ViewBag.UserName</li>
                             <li>
                                 @if (User.Identity.IsAuthenticated)

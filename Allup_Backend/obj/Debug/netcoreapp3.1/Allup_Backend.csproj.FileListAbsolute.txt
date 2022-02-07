@@ -119,6 +119,11 @@
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Areas/AdminArea/Views/About/Detail.cshtml.g.cs
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Areas/AdminArea/Views/About/Index.cshtml.g.cs
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Areas/AdminArea/Views/About/Update.cshtml.g.cs
+/Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Areas/AdminArea/Views/AuthorSlider/Create.cshtml.g.cs
+/Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Areas/AdminArea/Views/AuthorSlider/Delete.cshtml.g.cs
+/Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Areas/AdminArea/Views/AuthorSlider/Detail.cshtml.g.cs
+/Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Areas/AdminArea/Views/AuthorSlider/Index.cshtml.g.cs
+/Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Areas/AdminArea/Views/AuthorSlider/Update.cshtml.g.cs
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Areas/AdminArea/Views/CompanySlider/Create.cshtml.g.cs
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Areas/AdminArea/Views/CompanySlider/Delete.cshtml.g.cs
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Areas/AdminArea/Views/CompanySlider/Index.cshtml.g.cs
@@ -169,5 +174,3 @@
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Allup_Backend.dll
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Allup_Backend.pdb
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Allup_Backend.genruntimeconfig.cache
-/Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Allup_Backend.csproj.AssemblyReference.cache
-/Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/bin/Debug/netcoreapp3.1/Allup_Backend

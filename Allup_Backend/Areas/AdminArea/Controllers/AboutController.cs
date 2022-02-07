@@ -78,7 +78,7 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
 
             About newAbout = new About();
 
-            string fileName = await about.Photo.SaveImageAsync(_env.WebRootPath, "assets/images/");
+            string fileName = await about.Photo.SaveImageAsync(_env.WebRootPath, "assets/images");
 
             newAbout.Title = about.Title;
             newAbout.Description = about.Description;
@@ -111,7 +111,7 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
             About dbAbout = await _context.Abouts.FindAsync(id);
             if (dbAbout == null) return NotFound();
 
-            string path = Path.Combine(_env.WebRootPath, "assets/images/", dbAbout.ImageUrl);
+            string path = Path.Combine(_env.WebRootPath, "assets/images", dbAbout.ImageUrl);
             if (System.IO.File.Exists(path))
             {
                 System.IO.File.Delete(path);
@@ -168,12 +168,12 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
                     return View();
                 }
                 About dbAbout = await _context.Abouts.FindAsync(id);
-                string path = Path.Combine(_env.WebRootPath, "assets/images/", about.ImageUrl);
+                string path = Path.Combine(_env.WebRootPath, "assets/images", dbAbout.ImageUrl);
                 if (System.IO.File.Exists(path))
                 {
                     System.IO.File.Delete(path);
                 }
-                string fileName = await about.Photo.SaveImageAsync(_env.WebRootPath, "assets/images/");
+                string fileName = await about.Photo.SaveImageAsync(_env.WebRootPath, "assets/images");
 
 
                 dbAbout.ImageUrl = fileName;

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<AuthorSlider>
+
+<div class="col-lg-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Hoverable Table</h4>
+            <p class="card-description">
+                <a class="btn btn-info" asp-controller="AuthorSlider" asp-action="Create"> Create Author Slider</a>
+            </p>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Settings</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <img src="~/assets/images/author/@item.ImageUrl" style="width:70px; height:70px" />
+                            </td>
+                            <td>
+                                <p>@item.AuthorName</p>
+                            </td>
+
+                            <td>
+                                <a asp-controller="AuthorSlider" asp-action="Update" asp-route-id="@item.Id" class="btn btn-success">
+                                    <i class="icon-credit-card"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <a asp-controller="AuthorSlider" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-light">
+                                    <i class="icon-info"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <a asp-controller="AuthorSlider" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">
+                                    <i class="icon-magnifier-remove"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
