@@ -151,6 +151,21 @@
                             Dashboard
                         </a>
                     </li>
+                    <li class="nav-item nav-category">
+                        <a class="nav-link" asp-area="AdminArea" asp-controller="Category" asp-action="Index">
+                            Categories
+                        </a>
+                    </li>
+                    <li class="nav-item nav-category">
+                        <a class="nav-link" asp-area="AdminArea" asp-controller="Brand" asp-action="Index">
+                            Brands
+                        </a>
+                    </li>
+                    <li class="nav-item nav-category">
+                        <a class="nav-link" asp-area="AdminArea" asp-controller="Product" asp-action="Index">
+                            Products
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" asp-area="AdminArea" asp-controller="Contact" asp-action="Index">
                             Contact
@@ -266,6 +281,8 @@
     <script src="~/assets/admin/./js/dashboard.js"></script>
     @RenderSection("Scripts", false)
     @RenderSection("Css", false)
+    @RenderSection("CategoryScript", false)
+    @RenderSection("BrandCreate", false)
     <!-- End custom js for this page -->
 </body>
 </html>

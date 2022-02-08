@@ -11,8 +11,8 @@ namespace Allup_Backend.Models
         [Required(ErrorMessage = "can not be empty")]
         public string Name { get; set; }
 
-        public ICollection<CategoryBrand> CategoryBrands{ get; set; }
+        public List<CategoryBrand> CategoryBrands{ get; set; }
 
-        public ICollection<Product> Products { get; set; }
+        public List<Product> Products { get; set; }
     }
 }

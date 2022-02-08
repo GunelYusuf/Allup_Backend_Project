@@ -1,6 +1,5 @@
 ﻿@model Category
 
-
 <div class="container">
     <div class="row">
         <div class="col-md-6 grid-margin stretch-card">
@@ -17,12 +16,12 @@
                         </div>
                         <div class="form-group">
                             <label class="form-check-label">
-                                <input class="form-check-input" asp-for="IsMain" onchange="valueChanged()" /> @Html.DisplayNameFor(model => model.IsMain)
+                                <input class="form-check-input" asp-for="IsMain" onchange="valueChanged()" /> Is Main
                             </label>
                         </div>
                         <div class="form-group">
                             <label class="form-check-label">
-                                <input class="form-check-input" asp-for="IsFeatured" /> @Html.DisplayNameFor(model => model.IsFeatured)
+                                <input class="form-check-input" asp-for="IsFeatured" /> Is Featured
                             </label>
                         </div>
                         <div class="form-group">
@@ -34,9 +33,7 @@
                                         @item.Name
                                     </option>
                                 }
-
-
-                            </select>
+                        </select>
                         </div>
                         <div class="form-group" style="display:none" id="photodiv">
                             <label asp-for="Photo"></label>

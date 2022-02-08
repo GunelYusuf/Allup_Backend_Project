@@ -41,5 +41,7 @@ namespace Allup_Backend.DAL
 
         public DbSet<AuthorSlider> AuthorSliders { get; set; }
 
+        public DbSet<CategoryBrand> CategoryBrands { get; set; }
+
     }
 }

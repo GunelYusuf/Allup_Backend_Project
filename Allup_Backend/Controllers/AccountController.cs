@@ -46,7 +46,7 @@ namespace Allup_Backend.Controllers
                 Subscribe = register.Subscribe
 
             };
-            //user.IsActive = true;
+            user.IsActive = true;
             IdentityResult identityResult = await _userManager.CreateAsync(user, register.Password);
 
             if (!identityResult.Succeeded)
@@ -85,7 +85,7 @@ namespace Allup_Backend.Controllers
             smtp.Send(mail);
 
 
-            await _userManager.AddToRoleAsync(user, "Admin");
+            await _userManager.AddToRoleAsync(user, "Member");
 
             TempData["Success"] = "Please confirm email";
 
@@ -156,7 +156,7 @@ namespace Allup_Backend.Controllers
 
             var roles = await _userManager.GetRolesAsync(dbUser);
 
-            if (roles[0] == "Admin")
+            if (roles[0] == "SuperAdmin")
             {
                 return RedirectToAction("Index", "Dashboard", new { area = "AdminArea" });
             }
@@ -179,6 +179,10 @@ namespace Allup_Backend.Controllers
 
         public async Task CreateRole()
         {
+            if (!await _roleManager.RoleExistsAsync("SuperAdmin"))
+            {
+                await _roleManager.CreateAsync(new IdentityRole { Name = "SuperAdmin" });
+            }
             if (!await _roleManager.RoleExistsAsync("Admin"))
             {
                 await _roleManager.CreateAsync(new IdentityRole { Name = "Admin" });

@@ -1,0 +1,53 @@
+﻿@model Brand
+
+<div class="col-lg-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Hoverable Table</h4>
+            <p class="card-description">
+                <a class="btn btn-primary" asp-controller="Category" asp-action="Create">Update Brand</a>
+            </p>
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                @foreach (var item in ViewBag.noneCheck)
+                {
+                    <div class="d-flex align-items-stretch">
+                        <div class="form-group form-check d-flex">
+                            <h5></h5>
+                        </div>
+                    </div>
+                    <div class="form-group form-check d-flex">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input subcategory" name="subcategory" value="@item.Id" /> <br />@item.Name
+                        </label>
+                    </div>
+
+
+                }
+                @foreach (var item in ViewBag.checkCategory)
+                {
+                    <div class="form-group form-check d-flex">
+                        <label class="form-check-label">
+                            <input type="checkbox" checked class="form-check-input subcategory" name="subcategory" value="@item.Id" /> <br />§@item.Category.Name
+                        </label>
+                    </div>
+
+                }
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-secondary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

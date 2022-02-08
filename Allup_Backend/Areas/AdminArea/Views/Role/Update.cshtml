@@ -2,12 +2,28 @@
 @model UpdateRoleVM
 
 
-<h1>@Model.User.FullName</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">@Model.User.FullName</h4>
+                    <p class="card-description"> Create Role</p>
 
-<form method="post">
-    @foreach (var role in Model.Roles)
-    {
-        <input @(Model.UserRoles.Contains(role.Name) ? "checked =\"checked\"" : "") type="checkbox" name="roles" value="@role.Name" /> @role.Name <br />
-    }
-    <button type="submit">Change</button>
-</form>
+                    <form method="post">
+                        @foreach (var role in Model.Roles)
+                        {
+                            <input @(Model.UserRoles.Contains(role.Name) ? "checked =\"checked\"" : "") type="checkbox" name="roles" value="@role.Name" /> @role.Name <br />
+                        }
+                        <button type="submit">Change</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

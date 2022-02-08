@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Allup_Backend.Areas.AdminArea.Controllers
 {
     [Area("AdminArea")]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "SuperAdmin")]
     public class RoleController : Controller
     {
         private readonly UserManager<AppUser> _userManager;

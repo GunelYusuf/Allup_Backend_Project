@@ -1,5 +1,22 @@
-﻿
-<form method="post">
-    <input type="text" name="role" placeholder="Role" />
-    <button type="submit">Add Role</button>
-</form>
+﻿<div class="container">
+    <div class="row">
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Default form</h4>
+                    <p class="card-description"> Create Role</p>
+                    <form class="forms-sample" method="Post">
+                        <input type="text" name="role" placeholder="Role" />
+                        <button type="submit">Add Role</button>
+                        <button asp-action="Index" class="btn btn-outline-warning"> Go Back</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

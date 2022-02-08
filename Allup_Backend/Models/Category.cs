@@ -27,7 +27,7 @@ namespace Allup_Backend.Models
         [NotMapped]
         public IFormFile Photo { get; set; }
 
-        public ICollection<CategoryBrand> CategoryBrands { get; set; }
+        public List<CategoryBrand> CategoryBrands { get; set; }
 
 
     }
