@@ -1,43 +1,91 @@
 ﻿@model Blog
+
+
+
 <div class="container">
     <div class="row">
         <div class="col-md-6 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Default form</h4>
-                    <p class="card-description"> Create Blog</p>
-                    <form class="forms-sample" method="Post" enctype="multipart/form-data">
+                    <p class="card-description"> Create Blog Form </p>
+                    <form asp-controller="Blog" asp-action="Create" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="form-group">
-                            <label asp-for="Photo"></label>
-                            <input asp-for="Photo" class="form-control" accept="image/*" placeholder="Photo">
-                            <span class="text-danger" asp-validation-for="Photo"></span>
+                            <label asp-for="Title" class="control-label"></label>
+                            <input asp-for="Title" class="form-control" />
+                            <span asp-validation-for="Title" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="Title"></label>
-                            <textarea class="form-control" asp-for="Title" placeholder="Title"></textarea>
-                            <span class="text-danger" asp-validation-for="Title"></span>
+                            <label asp-for="Description" class="control-label"></label>
+                            <input asp-for="Description" class="form-control" />
+                            <span asp-validation-for="Description" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="Description"></label>
-                            <textarea class="form-control" asp-for="Description" placeholder="Description"></textarea>
-                            <span class="text-danger" asp-validation-for="Description"></span>
+                            <label asp-for="ProductId" class="control-label"></label>
+                            <select asp-for="ProductId" class="form-control" asp-items="ViewBag.ProductId"></select>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Date" class="control-label"></label>
+                            <input asp-for="Date" class="form-control" />
+                            <span asp-validation-for="Date" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="Date"></label>
-                            <textarea class="form-control" asp-for="Date" placeholder="Date"></textarea>
-                            <span class="text-danger" asp-validation-for="Date"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="@Model.Product.ProductTags" class="form-label">Tags</label>
-                            <select asp-for="@Model.Product.ProductTags" asp-items="@(new SelectList(ViewBag.Tags,"Id","Name"))" class="form-control">
-                                <option value="0">Please Select</option>
+                            <label class="control-label">Please,Select a picture or video</label>
+
+                            <select id="select">
+                                <option selected value="0">Selected Option</option>
+                                <option value="1">Video </option>
+                                <option value="2">Photo</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        <button asp-action="Index" class="btn btn-outline-warning"> Go Back</button>
+                        <div class="form-group" style="display:none" id="videodiv">
+                            <label class="control-label">Please enter Video Url</label>
+                            <input id="videoinput" name="videourl" class="form-control" />
+                            <span class="text-danger"></span>
+                        </div>
+                        <div class="form-group" style="display:none" id="imagediv">
+                            <label asp-for="Photos"></label>
+                            <input asp-for="Photos" class="form-control" accept="image/*" placeholder="Photo">
+                            <span asp-validation-for="Photos" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" value="Create" class="btn btn-primary" />
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+@section BlogScript{
+    <script>$("#select").change(function () {
+            var value = $("#select").find(":selected").val();
+            if (value === "1") {
+                $("#videodiv").show();
+                $("#imagediv").hide();
+                $("#Photos").val() = "";
+            }
+             if (value === "2") {
+                $("#videodiv").hide();
+                 $("#imagediv").show();
+                 $("#videoinput").val() = "";
+
+            }
+            if (value === "0") {
+                $("#videodiv").hide();
+                $("#imagediv").hide();
+                $("#Photos").val() = "";
+                $("#videoinput").val() = "";
+            }
+
+    })</script>
+}

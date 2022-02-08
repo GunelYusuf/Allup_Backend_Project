@@ -13,7 +13,7 @@ namespace Allup_Backend.Models
 
         [NotMapped]
 
-        public IFormFile Photo { get; set; }
+        public IFormFile[] Photos { get; set; }
 
         public string Title { get; set; }
 
@@ -30,5 +30,9 @@ namespace Allup_Backend.Models
         public int ProductId { get; set; }
 
         public IEnumerable<CommentBlog> CommentBlogs { get; set; }
+
+        public List<BlogImage> BlogImage { get; set; }
+       
+
     }
 }
