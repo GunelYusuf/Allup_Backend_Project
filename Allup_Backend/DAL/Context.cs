@@ -43,5 +43,10 @@ namespace Allup_Backend.DAL
 
         public DbSet<CategoryBrand> CategoryBrands { get; set; }
 
+        public DbSet<Sales> Sales { get; set; }
+
+        public DbSet<ProductSales> ProductSales { get; set; }
+
+
     }
 }

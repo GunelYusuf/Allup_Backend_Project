@@ -42,13 +42,13 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(Brand brand, int[] subcategory)
+        public async Task<ActionResult> Create(Brand brand, int[] subcategories)
         {
             bool isExist = _context.Brands.Any(b => b.Name.ToLower().Trim() == brand.Name.ToLower().Trim());
         
             if (isExist)
             {
-                ModelState.AddModelError("Name", "The category with this name already exists");
+                ModelState.AddModelError("Name", "The brand with this name already exists");
                 return RedirectToAction(nameof(Index));
 
             }
@@ -58,13 +58,13 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
             await _context.Brands.AddAsync(newBrand);
             await _context.SaveChangesAsync();
 
-            if (subcategory != null)
+            if (subcategories != null)
             {
-                foreach (var item in subcategory)
+                foreach (var subcategory in subcategories)
                 {
                     CategoryBrand categoryBrands = new CategoryBrand();
                     categoryBrands.BrandId = newBrand.Id;
-                    categoryBrands.CategoryId = item;
+                    categoryBrands.CategoryId = subcategory;
                     await _context.AddAsync(categoryBrands);
                     await _context.SaveChangesAsync();
                 }
