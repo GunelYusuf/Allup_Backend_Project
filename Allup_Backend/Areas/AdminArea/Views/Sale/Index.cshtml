@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Sales>
+
+<div class="col-lg-6 grid-margin stretch-card">
+    <form method="get" action="Index">
+        <input type="text" placeholder="search" name="name" />
+        <input type="submit" value="search" />
+    </form>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">User Table</h4>
+            <p class="card-description">
+                <a class="btn btn-primary" asp-controller="Sale" asp-action="Index"> Sales </a>
+            </p>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>FullName</th>
+                        <th>Product Name</th>
+                        <th>Settings</th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.AppUser.FullName</td>
+
+                            <td>
+                                @foreach (var sales in item.ProductSales)
+                                {
+                                    <p>@sales.Product.Name</p>
+
+                                }
+                            </td>
+
+                            <td><a class="btn btn-warning" asp-controller="Sale" asp-action="Detail" asp-route-id="@item.Id">Detail</a></td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

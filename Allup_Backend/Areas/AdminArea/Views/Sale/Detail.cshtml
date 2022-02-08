@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Sales>
+
+<div class="col-lg-6 grid-margin stretch-card">
+    <form method="get" action="Index">
+        <input type="text" placeholder="search" name="name" />
+        <input type="submit" value="search" />
+    </form>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">User Table</h4>
+            <p class="card-description">
+                <a class="btn btn-primary" asp-controller="Sale" asp-action="Index"> Sales </a>
+            </p>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>FullName</th>
+                        <th>Email</th>
+                        <th>Product Name</th>
+                        <th>Date</th>
+                        <th>Total</th>
+                        <th>Settings</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.AppUser.FullName</td>
+                            <td>@item.AppUser.Email</td>
+                            <td>
+                                @foreach (var sales in item.ProductSales)
+                                {
+                                    <p>@sales.Product.Name</p>
+
+                                }
+                            </td>
+                            <td>@item.SaleDate.ToString("MM/dd/yyy")</td>
+                            <td>@item.Total</td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

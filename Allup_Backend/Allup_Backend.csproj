@@ -46,6 +46,7 @@
     <None Remove="Areas\AdminArea\Views\AuthorSlider\" />
     <None Remove="Areas\AdminArea\Views\Category\" />
     <None Remove="Areas\AdminArea\Views\Brand\" />
+    <None Remove="Areas\AdminArea\Views\Sale\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -85,6 +86,7 @@
     <Folder Include="Areas\AdminArea\Views\AuthorSlider\" />
     <Folder Include="Areas\AdminArea\Views\Category\" />
     <Folder Include="Areas\AdminArea\Views\Brand\" />
+    <Folder Include="Areas\AdminArea\Views\Sale\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.0" />

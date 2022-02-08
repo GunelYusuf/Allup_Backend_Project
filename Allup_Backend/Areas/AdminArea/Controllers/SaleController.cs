@@ -6,6 +6,7 @@ using Allup_Backend.DAL;
 using Allup_Backend.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Allup_Backend.Areas.AdminArea.Controllers
 {
@@ -21,17 +22,17 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
             _userManager = userManager;
             _context = context;
         }
-        //public IActionResult Index()
-        //{
+        public IActionResult Index()
+        {
 
-        //    List<Sales> sales = _context.Sales.Include(p => p.ProductSales).ThenInclude(p => p.PRODUCTS1).Include(u => u.AppUser).ToList();
-        //    return View(sales);
-        //}
+            List<Sales> sales = _context.Sales.Include(p => p.ProductSales).ThenInclude(p => p.Product).Include(u => u.AppUser).ToList();
+            return View(sales);
+        }
 
-        //public async Task<IActionResult> Detail(int? Id)
-        //{
-        //    Sales sales = await _context.Sales.Include(p => p.ProductSales).ThenInclude(p => p.PRODUCTS1).Include(u => u.AppUser).FirstOrDefaultAsync();
-        //    return View(sales);
-        //}
+        public async Task<IActionResult> Detail(int? Id)
+        {
+            Sales sales = await _context.Sales.Include(p => p.ProductSales).ThenInclude(p => p.Product).Include(u => u.AppUser).FirstOrDefaultAsync();
+            return View(sales);
+        }
     }
 }
