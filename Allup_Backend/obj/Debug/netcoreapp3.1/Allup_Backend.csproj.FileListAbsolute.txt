@@ -103,7 +103,6 @@
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/bin/Debug/netcoreapp3.1/runtimes/unix/lib/netcoreapp2.0/System.Runtime.Caching.dll
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/bin/Debug/netcoreapp3.1/runtimes/win/lib/netcoreapp2.0/System.Runtime.Caching.dll
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/bin/Debug/netcoreapp3.1/runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll
-/Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Allup_Backend.csproj.AssemblyReference.cache
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Allup_Backend.GeneratedMSBuildEditorConfig.editorconfig
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Allup_Backend.AssemblyInfoInputs.cache
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Allup_Backend.AssemblyInfo.cs
@@ -146,6 +145,8 @@
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Areas/AdminArea/Views/Message/Delete.cshtml.g.cs
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Areas/AdminArea/Views/Message/Detail.cshtml.g.cs
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Areas/AdminArea/Views/Message/Index.cshtml.g.cs
+/Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Areas/AdminArea/Views/Product/Create.cshtml.g.cs
+/Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Areas/AdminArea/Views/Product/Index.cshtml.g.cs
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Areas/AdminArea/Views/Role/Create.cshtml.g.cs
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Areas/AdminArea/Views/Role/Index.cshtml.g.cs
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Areas/AdminArea/Views/Role/Update.cshtml.g.cs
@@ -156,8 +157,9 @@
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Areas/AdminArea/Views/ServicesSlider/Detail.cshtml.g.cs
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Areas/AdminArea/Views/ServicesSlider/Index.cshtml.g.cs
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Areas/AdminArea/Views/ServicesSlider/Update.cshtml.g.cs
-/Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Areas/AdminArea/Views/Shared/ParentCategoryPartial.cshtml.g.cs
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml.g.cs
+/Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Areas/AdminArea/Views/Shared/_CreateProductPartial.cshtml.g.cs
+/Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Areas/AdminArea/Views/Shared/_ParentCategoryPartial.cshtml.g.cs
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Areas/AdminArea/Views/Shared/_Validation.cshtml.g.cs
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Areas/AdminArea/Views/User/Create.cshtml.g.cs
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Razor/Areas/AdminArea/Views/User/Detail.cshtml.g.cs
@@ -187,4 +189,3 @@
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Allup_Backend.dll
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Allup_Backend.pdb
 /Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/Debug/netcoreapp3.1/Allup_Backend.genruntimeconfig.cache
-/Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/bin/Debug/netcoreapp3.1/Allup_Backend

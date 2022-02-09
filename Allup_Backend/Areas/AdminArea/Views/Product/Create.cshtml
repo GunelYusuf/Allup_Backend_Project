@@ -1,0 +1,113 @@
+﻿@model Product
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Default form</h4>
+                    <p class="card-description"> Create Category</p>
+                    <form asp-action="Create" class="forms-sample" method="Post" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Name"></label>
+                            <textarea class="form-control" asp-for="Name" placeholder="Name"></textarea>
+                            <span class="text-danger" asp-validation-for="Name"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Description"></label>
+                            <textarea class="form-control" asp-for="Description" placeholder="Description"></textarea>
+                            <span class="text-danger" asp-validation-for="Description"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Price"></label>
+                            <textarea class="form-control" asp-for="Price" placeholder="Price"></textarea>
+                            <span class="text-danger" asp-validation-for="Price"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Tax"></label>
+                            <textarea class="form-control" asp-for="Tax" placeholder="Tax"></textarea>
+                            <span class="text-danger" asp-validation-for="Tax"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ProductCode"></label>
+                            <textarea class="form-control" asp-for="ProductCode" placeholder="Product Code"></textarea>
+                            <span class="text-danger" asp-validation-for="ProductCode"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Quantity"></label>
+                            <textarea class="form-control" asp-for="Quantity" placeholder="Quantity"></textarea>
+                            <span class="text-danger" asp-validation-for="Quantity"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-check-label">
+                                <input class="form-check-input" asp-for="Availability" /> Availability
+                              </label>
+                        </div>
+                        <div class="form-group form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" asp-for="IsFeatured" /> Is Featured 
+                              </label>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="BrandId" class="control-label"></label>
+                            <select asp-for="BrandId" class="form-control" asp-items="ViewBag.Brand"></select>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Category</label>
+                            <select id="change" class="form-control" name="categoryId">
+                                <option selected value="0">Select Category</option>
+                            </select>
+                        </div>
+
+                        @foreach (var item in ViewBag.Tags)
+                         {
+                            <div class="form-group form-check d-flex">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input subcategory" name="tagId" value="@item.Id" />@item.Name
+                                </label>
+                            </div>
+                         }
+                        @foreach (var item in ViewBag.Colors)
+                        {
+                            <div class="form-group form-check d-flex">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input subcategory" name="colorId" value="@item.Id" />@item.Name
+                                </label>
+                            </div>
+
+                        }
+                        <div class="form-group">
+                            <label asp-for="Photos"></label>
+                            <input asp-for="Photos" class="form-control" accept="image/*" placeholder="Photo">
+                            <span class="text-danger" asp-validation-for="Photos"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="CampaignId" class="control-label"></label>
+                            <select asp-for="CampaignId" class="form-control" asp-items="ViewBag.Campaign"></select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button asp-action="Index" class="btn btn-outline-warning"> Go Back</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section CreateProduct{
+    <script>$("#BrandId").change(function () {
+            const change = $("#BrandId option:selected").val()
+            $.ajax({
+                url: "CallBackCategory?id=" + change,
+                method: "get",
+                success: function (res) {
+                    $("#change option").next().remove()
+                    $("#change").append(res)
+                }
+            })
+        });</script>
+    }
+@section Scripts{
+    <partial name="_Validation"></partial>
+}

@@ -16,12 +16,14 @@
                         </div>
                         <div class="form-group">
                             <label class="form-check-label">
-                                <input class="form-check-input" asp-for="IsMain" onchange="valueChanged()" /> Is Main
+                                <input class="form-check-input" asp-for="IsMain" onchange="valueChanged()" />
+                                Is Main
                             </label>
                         </div>
                         <div class="form-group">
                             <label class="form-check-label">
-                                <input class="form-check-input" asp-for="IsFeatured" /> Is Featured
+                                <input class="form-check-input" asp-for="IsFeatured" />
+                                Is Featured
                             </label>
                         </div>
                         <div class="form-group">
@@ -33,7 +35,7 @@
                                         @item.Name
                                     </option>
                                 }
-                        </select>
+                            </select>
                         </div>
                         <div class="form-group" style="display:none" id="photodiv">
                             <label asp-for="Photo"></label>
@@ -48,10 +50,6 @@
         </div>
     </div>
 </div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
 @section CategoryScript{
     <script>function valueChanged() {
             if ($('#IsMain').is(":checked")) {
@@ -63,4 +61,8 @@
                 $("#photodiv").hide();
             }
         }</script>
+}
+
+@section Scripts{
+    <partial name="_Validation"></partial>
 }
