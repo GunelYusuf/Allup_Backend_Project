@@ -65,17 +65,19 @@
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
 @section BlogScript{
-    <script>$("#select").change(function () {
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script>
+       $("#select").change(function () {
             var value = $("#select").find(":selected").val();
             if (value === "1") {
                 $("#videodiv").show();
                 $("#imagediv").hide();
                 $("#Photos").val() = "";
             }
-             if (value === "2") {
+            if (value === "2") {
                 $("#videodiv").hide();
-                 $("#imagediv").show();
-                 $("#videoinput").val() = "";
+                $("#imagediv").show();
+                $("#videoinput").val() = "";
 
             }
             if (value === "0") {
@@ -85,5 +87,10 @@
                 $("#videoinput").val() = "";
             }
 
-    })</script>
+        })
+        CKEDITOR.replace('Description', {
+            language: 'en',
+            uiColor: '#9AB8F3'
+        });
+    </script>
 }

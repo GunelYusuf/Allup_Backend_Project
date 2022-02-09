@@ -109,10 +109,10 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
                 return RedirectToAction("Edit");
             }
 
-            List<int> checkedCategory = _context.CategoryBrands.Where(c => c.BrandId == newBrand.Id).Select(i => i.CategoryId).ToList();
+            List<int> checkCategory = _context.CategoryBrands.Where(c => c.BrandId == newBrand.Id).Select(i => i.CategoryId).ToList();
 
-            List<int> addCategory = subcategory.Except(checkedCategory).ToList();
-            List<int> removedCategory = checkedCategory.Except(subcategory).ToList();
+            List<int> addCategory = subcategory.Except(checkCategory).ToList();
+            List<int> removedCategory = checkCategory.Except(subcategory).ToList();
 
             int addCategoryLength = addCategory.Count();
             int removedCategoryLength = removedCategory.Count();

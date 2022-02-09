@@ -131,7 +131,7 @@ namespace Allup_Backend.Controllers
             foreach (var item in basketProducts)
             {
                 Product dbProduct = await _context.Products.FindAsync(item.Id);
-                
+                if (dbProduct.Count < item.Count)
                 {
                     TempData["Failed"] = $"{item.Name} is not in the database";
                     return RedirectToAction("ShowBaket", "Basket");
