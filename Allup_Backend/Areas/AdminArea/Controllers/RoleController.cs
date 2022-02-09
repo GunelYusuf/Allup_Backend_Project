@@ -89,7 +89,7 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
         public async Task<IActionResult> Update(string id, IList<string> Roles)
         {
             var user = await _userManager.FindByIdAsync(id);
-            var allRoles = _roleManager.Roles.ToList();
+            var dbRoles = _roleManager.Roles.ToList();
             var userRoles = await _userManager.GetRolesAsync(user);
 
             var addedRoles = Roles.Except(userRoles);

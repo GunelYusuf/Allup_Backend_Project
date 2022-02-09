@@ -23,23 +23,23 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
             _roleManager = roleManager;
             _context = context;
         }
-        //public async Task<IActionResult> Index(string name)
-        //{
+        public async Task<IActionResult> Index(string name)
+        {
 
-        //    var users = name == null ? _userManager.Users.ToList() :
-        //     _userManager.Users.Where(u => u.FullName.ToLower().Contains(name.ToLower())).ToList();
-        //    //List<UserReturnVM> userVMs = new List<UserReturnVM>();
-        //    //foreach (var user in users)
-        //    //{
-        //    //    UserReturnVM userVM = new UserVM();
-        //    //    userReturnVM.FullName = user.FullName;
-        //    //    userReturnVM.UserName = user.UserName;
-        //    //    userReturnVM.Email = user.Email;
-        //    //    userReturnVM.Role = (await _userManager.GetRolesAsync(user))[0];
-        //    //    userReturnVMs.Add(userVM);
-        //    //}
-        //    return View(users);
-        //}
+            var users = name == null ? _userManager.Users.ToList() :
+             _userManager.Users.Where(u => u.FullName.ToLower().Contains(name.ToLower())).ToList();
+            //List<UserReturnVM> userVMs = new List<UserReturnVM>();
+            //foreach (var user in users)
+            //{
+            //    UserReturnVM userVM = new UserVM();
+            //    userReturnVM.FullName = user.FullName;
+            //    userReturnVM.UserName = user.UserName;
+            //    userReturnVM.Email = user.Email;
+            //    userReturnVM.Role = (await _userManager.GetRolesAsync(user))[0];
+            //    userReturnVMs.Add(userVM);
+            //}
+            return View(users);
+        }
 
         public async Task<IActionResult> Detail(string id)
         {

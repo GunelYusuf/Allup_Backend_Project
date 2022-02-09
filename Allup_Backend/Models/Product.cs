@@ -19,15 +19,27 @@ namespace Allup_Backend.Models
         [Required]
         public double Price { get; set; }
 
+        [Required]
+        public string ProductCode { get; set; }
+
         public double  Tax { get; set; }
 
         public bool Availability { get; set; }
-
+        [Required]
         public int Quantity { get; set; }
 
         public bool IsFeatured { get; set; }
 
-        public ICollection<ProductImage> Images { get; set; }
+        public List<ProductImage> Images { get; set; }
+
+        [NotMapped]
+        [Required]
+
+        public IFormFile[] Photos { get; set; }
+
+        public int CampaignId { get; set; }
+
+        public Campaign Campaign { get; set; }
 
         public Brand Brand { get; set; }
 
