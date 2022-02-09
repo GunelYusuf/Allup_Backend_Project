@@ -41,7 +41,7 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
             return View(dbCategory);
         }
 
-        public async Task<ActionResult> Active(int? id)
+        public async Task<IActionResult> Active(int? id)
         {
             if (id == null) return NotFound();
             Category dbCategory = await _context.Categories.FindAsync(id);
@@ -127,7 +127,7 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
         }
 
         //Get Update
-        public async Task<ActionResult> Update(int? id)
+        public async Task<IActionResult> Update(int? id)
         {
             if (id == null) return NotFound();
             Category dbCategory = await _context.Categories.FindAsync(id);
