@@ -49,15 +49,13 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
                 return RedirectToAction(nameof(Index));
 
             }
+            Brand newBrand = new Brand();
+            newBrand.Name = brand.Name;
+            await _context.Brands.AddAsync(newBrand);
+            await _context.SaveChangesAsync();
 
             if (subcategories != null)
             {
-
-                Brand newBrand = new Brand();
-                newBrand.Name = brand.Name;
-                await _context.Brands.AddAsync(newBrand);
-                await _context.SaveChangesAsync();
-
                 foreach (var subcategory in subcategories)
                 {
                     CategoryBrand categoryBrands = new CategoryBrand();
@@ -66,10 +64,10 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
                     await _context.AddAsync(categoryBrands);
                     await _context.SaveChangesAsync();
                 }
-                return RedirectToAction(nameof(Index));
+               
             }
 
-            return NotFound();
+            return RedirectToAction(nameof(Index));
         }
 
         //Get Update
@@ -160,14 +158,11 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
 
 
             List<CategoryBrand> categoryBrand = await _context.CategoryBrands.ToListAsync();
-            foreach (var item in categoryBrand)
+            foreach (var brandDeleted in categoryBrand)
             {
-                CategoryBrand deletedBrand = await _context.CategoryBrands.FirstOrDefaultAsync(c => c.BrandId == brand.Id);
-                if (deletedBrand != null)
-                {
-                    _context.CategoryBrands.Remove(deletedBrand);
+                    _context.CategoryBrands.Remove(brandDeleted);
                     await _context.SaveChangesAsync();
-                }
+                
             }
             _context.Brands.Remove(_brand);
             await _context.SaveChangesAsync();
