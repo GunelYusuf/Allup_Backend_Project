@@ -36,9 +36,36 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
         }
 
 
-        public ActionResult Details(int id)
+        public async Task<IActionResult> Details(int? id)
         {
-            return View();
+            if (id == null) return NotFound();
+
+            Product product = await _context.Products.Include(p => p.Campaign)
+                .Include(p => p.Brand)
+                .FirstOrDefaultAsync(p => p.Id == id);
+
+            ViewBag.colors = await _context.ProductColors
+               .Where(c => c.ProductId == id)
+               .Select(c => c.Color)
+               .ToListAsync();
+
+            var relation = await _context.ProductRelateds
+                .FirstOrDefaultAsync(p => p.ProductId == id && p.BrandId == product.BrandId);
+
+            ViewBag.category = await _context.Categories
+                .FirstOrDefaultAsync(c => c.Id == relation.CategoryId);
+
+           ViewBag.tags = await _context.ProductTags
+                .Where(t => t.ProductId == id)
+                .Select(t => t.Tag)
+                .ToListAsync();
+
+            ViewBag.photo = _context.ProductImages
+                .Where(p => p.ProductId == product.Id && p.IsMain == true)
+                .FirstOrDefault();
+
+            return View(product);
+           
         }
         public ActionResult CallCategory(int? id)
         {
@@ -49,7 +76,7 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
         }
 
         //Get Create
-        public ActionResult Create()
+        public IActionResult Create()
         {
             var campaign = new SelectList(_context.Campaigns.OrderBy(l => l.Discount)
             .ToDictionary(us => us.Id, us => us.Discount), "Key", "Value");
@@ -98,6 +125,7 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
                 CategoryId = categoryid
             };
             await _context.ProductRelateds.AddAsync(productRelated);
+
             if (tagId != null && colorId != null)
             {
                 foreach (var item in colorId)
@@ -156,42 +184,6 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // Get Update
-        public async Task<IActionResult> Update(int? id)
-        {
-            if (id == null) return NotFound();
-            Product product = await _context.Products.FindAsync(id);
-
-            var relation = _context.ProductRelateds.Where(b => b.ProductId == id && b.BrandId == product.BrandId).FirstOrDefault();
-            Category category = await _context.Categories.FindAsync(relation.CategoryId);
-
-            var brands = new SelectList(_context.Brands.OrderBy(l => l.Name)
-            .ToDictionary(us => us.Id, us => us.Name), "Key", "Value");
-            ViewBag.BrandId = brands;
-
-            var campaign = new SelectList(_context.Campaigns.OrderBy(l => l.Discount)
-             .ToDictionary(us => us.Id, us => us.Discount), "Key", "Value");
-            ViewBag.CampaignId = campaign;
-
-            ViewBag.category = category;
-            var photos = _context.ProductImages.Where(p => p.ProductId == id).ToList();
-            ViewBag.photos = photos;
-
-            var checkTag = await _context.ProductTags.Where(p => p.ProductId == id).Select(t => t.Tag).ToListAsync();
-            var checkColor = await _context.ProductColors.Where(p => p.ProductId == id).Select(c => c.Color).ToListAsync();
-            ViewBag.checkTag = checkTag;
-            ViewBag.checkColor = checkColor;
-
-            var allTag = await _context.Tags.ToListAsync();
-            var allColor = await _context.Colors.ToListAsync();
-
-            var noneCheckTag = allTag.Except(checkTag);
-            var noneCheckColor = allColor.Except(checkColor);
-            ViewBag.noneTag = noneCheckTag;
-            ViewBag.noneColor = noneCheckColor;
-
-            return View(product);
-        }
 
 
         public async Task<IActionResult> Delete(int? id)
@@ -201,7 +193,6 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
             if (dbProduct == null) return NotFound();
             return View(dbProduct);
         }
-
 
         // Post Delete
         [HttpPost]
@@ -251,6 +242,46 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        // Get Update
+        public async Task<IActionResult> Update(int? id)
+        {
+            if (id == null) return NotFound();
+            Product product = await _context.Products.FindAsync(id);
+
+            var relation = _context.ProductRelateds.Where(b => b.ProductId == id && b.BrandId == product.BrandId).FirstOrDefault();
+            Category category = await _context.Categories.FindAsync(relation.CategoryId);
+
+            var brands = new SelectList(_context.Brands.OrderBy(l => l.Name)
+            .ToDictionary(us => us.Id, us => us.Name), "Key", "Value");
+            ViewBag.BrandId = brands;
+
+            var campaign = new SelectList(_context.Campaigns.OrderBy(l => l.Discount)
+             .ToDictionary(us => us.Id, us => us.Discount), "Key", "Value");
+            ViewBag.CampaignId = campaign;
+
+            ViewBag.category = category;
+            var photos = _context.ProductImages.Where(p => p.ProductId == id).ToList();
+            ViewBag.photos = photos;
+
+            var checkTag = await _context.ProductTags.Where(p => p.ProductId == id).Select(t => t.Tag).ToListAsync();
+            var checkColor = await _context.ProductColors.Where(p => p.ProductId == id).Select(c => c.Color).ToListAsync();
+            ViewBag.checkTag = checkTag;
+            ViewBag.checkColor = checkColor;
+
+            var allTag = await _context.Tags.ToListAsync();
+            var allColor = await _context.Colors.ToListAsync();
+
+            var noneCheckTag = allTag.Except(checkTag);
+            var noneCheckColor = allColor.Except(checkColor);
+            ViewBag.noneTag = noneCheckTag;
+            ViewBag.noneColor = noneCheckColor;
+
+            return View(product);
+        }
+
+
+       
 
 
         // Post Update

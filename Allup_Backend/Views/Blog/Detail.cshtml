@@ -93,7 +93,7 @@
                                                     <a asp-controller="Blog" asp-action="Details" asp-route-id="@item.Id"><img src="~/assets/images/@item.BlogImage[0].ImageUrl" alt="blog"></a>
                                                 </div>
                                             }
-                                            else if (item.BlogPhotos[0].VideoUrl != null)
+                                            else if (item.BlogImage[0].VideoUrl != null)
                                             {
                                                 <div class="blog-post-video">
                                                     <a asp-controller="Blog" asp-action="Details" asp-route-id="@item.Id"> <iframe src="@item.BlogImage[0].VideoUrl" allow="autoplay; encrypted-media" allowfullscreen="" width="221" height="163"></iframe></a>
