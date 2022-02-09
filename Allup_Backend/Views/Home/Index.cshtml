@@ -1883,66 +1883,48 @@
 <section class="blog-area blog-bg pt-100 pb-100">
     <div class="container">
         <div class="row blog-active">
-            <div class="col-lg-4">
-                <div class="single-blog">
-                    <div class="blag-image">
-                        <a href="blog-single-left-sidebar.html"><img src="~/assets/images/blog-1.jpg" alt="Blog"></a>
-                        <p class="meta-date">
-                            <span class="day">05</span>
-                            <span class="month">Dec</span>
-                        </p>
-                    </div>
-                    <div class="blag-content">
-                        <h2 class="blog-title"><a href="blog-single-left-sidebar.html">This is Third Post For XipBlog</a></h2>
-                        <p>simply dummy text of the printing and typesetting industry. Lorem Ipsum ...</p>
-                    </div>
-                </div> <!-- single blog -->
-            </div>
-            <div class="col-lg-4">
-                <div class="single-blog">
-                    <div class="blag-image">
-                        <a href="blog-single-left-sidebar.html"><img src="~/assets/images/blog-2.jpg" alt="Blog"></a>
-                        <p class="meta-date">
-                            <span class="day">05</span>
-                            <span class="month">Dec</span>
-                        </p>
-                    </div>
-                    <div class="blag-content">
-                        <h2 class="blog-title"><a href="blog-single-left-sidebar.html">This is Third Post For XipBlog</a></h2>
-                        <p>simply dummy text of the printing and typesetting industry. Lorem Ipsum ...</p>
-                    </div>
-                </div> <!-- single blog -->
-            </div>
-            <div class="col-lg-4">
-                <div class="single-blog">
-                    <div class="blag-image">
-                        <a href="blog-single-left-sidebar.html"><img src="~/assets/images/blog-3.jpg" alt="Blog"></a>
-                        <p class="meta-date">
-                            <span class="day">05</span>
-                            <span class="month">Dec</span>
-                        </p>
-                    </div>
-                    <div class="blag-content">
-                        <h2 class="blog-title"><a href="blog-single-left-sidebar.html">This is Third Post For XipBlog</a></h2>
-                        <p>simply dummy text of the printing and typesetting industry. Lorem Ipsum ...</p>
-                    </div>
-                </div> <!-- single blog -->
-            </div>
-            <div class="col-lg-4">
-                <div class="single-blog">
-                    <div class="blag-image">
-                        <a href="blog-single-left-sidebar.html"><img src="~/assets/images/blog-4.jpg" alt="Blog"></a>
-                        <p class="meta-date">
-                            <span class="day">05</span>
-                            <span class="month">Dec</span>
-                        </p>
-                    </div>
-                    <div class="blag-content">
-                        <h2 class="blog-title"><a href="blog-single-left-sidebar.html">This is Third Post For XipBlog</a></h2>
-                        <p>simply dummy text of the printing and typesetting industry. Lorem Ipsum ...</p>
-                    </div>
-                </div> <!-- single blog -->
-            </div>
+            @foreach (var item in Model.Blogs)
+            {
+                <div class="col-lg-4">
+                    <div class="single-blog">
+                        <div class="blag-image">
+
+                            @foreach (var blog in ViewBag.photos)
+                            {
+                                if (blog.BlogId == item.Id && blog.ImageUrl != null)
+                                {
+                                    <div class="gallery-item">
+                                        <a asp-controller="Blog" asp-action="Details" asp-route-id="@item.Id"><img src="~/assets/images/@blog.ImageUrl" style="width:350px" height="258" alt="blog"></a>
+                                    </div>
+                                }
+
+                                if (blog.BlogId == item.Id && blog.VideoUrl != null)
+                                {
+                                    <div class="blog-post-video">
+                                        <iframe src="@blog.VideoUrl" allow="autoplay; encrypted-media" allowfullscreen="" width="560"></iframe>
+                                    </div>
+                                }
+                            }
+                            <p class="meta-date">
+                                <span class="day">@item.Date</span>
+                            </p>
+                        </div>
+                        <div class="blag-content">
+                            <h2 class="blog-title"><a href="blog-single-left-sidebar.html">@item.Title</a></h2>
+                            <p>
+                                @{
+                                    string ShortDesc = item.Description;
+                                    if (ShortDesc.Length > 218)
+                                    {
+                                        ShortDesc = ShortDesc.Substring(0, 218) + "...";
+                                    }
+                                }
+                                @Html.Raw(ShortDesc)
+                            </p>
+                        </div>
+                    </div> <!-- single blog -->
+                </div>
+            }
         </div> <!-- row -->
     </div> <!-- container -->
 </section>

@@ -1,12 +1,23 @@
-﻿@model Blog
+﻿@using Microsoft.AspNetCore.Http;
+@using System.Security.Claims;
+
+@model Blog
+
+@{
+    string UserId = null;
+    if (User.Identity.IsAuthenticated)
+    {
+        UserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+    }
+}
 <!--====== Breadcrumb Part Start ======-->
 
 <div class="breadcrumb-area">
     <div class="container-fluid custom-container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item"><a href="blog-grid-left-sidebar.html">Blog</a></li>
+                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                <li class="breadcrumb-item"><a asp-controller="Blog" asp-action="Index">Blog</a></li>
                 <li class="breadcrumb-item active">Blog Single</li>
             </ol>
         </nav>
@@ -21,14 +32,25 @@
         <div class="row flex-lg-row-reverse justify-content-end">
             <div class="col-lg-9">
                 <div class="blog-single-posts mt-30">
-                    <div class="blog-single-image">
-                        <img src="assets/images/@Model.BlogImage[0].ImageUrl" alt="blog">
-                    </div>
+
+                    @if (Model.BlogImage[0].ImageUrl != null)
+                    {
+                        <div class="blog-single-image">
+                            <img src="~/assets/images/@Model.BlogImage[0].ImageUrl" alt="blog">
+                        </div>
+                    }
+                    else if (Model.BlogImage[0].VideoUrl != null)
+                    {
+                        <div class="blog-post-video">
+                            <iframe src="@Model.BlogImage[0].VideoUrl" allow="autoplay; encrypted-media" allowfullscreen="" width="700" height="400"></iframe>
+                        </div>
+                    }
+
                     <div class="blog-single-content">
                         <h4 class="blog-title">@Model.Title</h4>
                         <ul class="blog-meta">
-                            <li><a href="#"><i class="fas fa-user-circle"></i> Admin</a></li>
-                            <li><a href="#"><i class="fas fa-calendar-alt"></i>@Model.Date</a></li>
+                            <li><a href="#"><i class="fas fa-user-circle"></i>@ViewBag.user</a></li>
+                            <li><a href="#"><i class="fas fa-calendar-alt"></i><time datetime="@Model.Date"></time></a></li>
                         </ul>
                         <p> @Html.Raw(Model.Description)</p>
                     </div>
@@ -53,154 +75,95 @@
                         </div>
                     </div>
                 </div> <!-- blog single posts -->
+
                 <div class="blog-single-related-post pt-50">
                     <div class="section-title text-center">
                         <h2 class="title">Related Post</h2>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">
-                            <div class="single-blog-post blog-grid-post related-post mt-30">
-                                <div class="blog-post-media">
-                                    <div class="blog-image">
-                                        <a href="blog-single-left-sidebar.html"><img src="assets/images/blog-2.jpg" alt="blog"></a>
+                        @foreach (var item in ViewBag.relatedPosts)
+                        {
+                            <div class="col-md-4">
+                                <div class="single-blog-post blog-grid-post related-post mt-30">
+                                    <div class="blog-post-media">
+                                        <div class="blog-image">
+                                            @if (item.BlogImage[0].ImageUrl != null)
+                                            {
+                                                <div class="blog-image">
+                                                    <a asp-controller="Blog" asp-action="Details" asp-route-id="@item.Id"><img src="~/assets/images/@item.BlogImage[0].ImageUrl" alt="blog"></a>
+                                                </div>
+                                            }
+                                            else if (item.BlogPhotos[0].VideoUrl != null)
+                                            {
+                                                <div class="blog-post-video">
+                                                    <a asp-controller="Blog" asp-action="Details" asp-route-id="@item.Id"> <iframe src="@item.BlogImage[0].VideoUrl" allow="autoplay; encrypted-media" allowfullscreen="" width="221" height="163"></iframe></a>
+                                                </div>
+                                            }
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="blog-post-content">
-                                    <h4 class="blog-title"><a href="blog-single-left-sidebar.html">This is Third Post For XipBlog</a></h4>
-                                    <ul class="blog-meta">
-                                        <li><a href="#"><i class="fas fa-user-circle"></i> Admin</a></li>
-                                        <li><a href="#"><i class="fas fa-calendar-alt"></i> 24 April, 2020</a></li>
-                                    </ul>
-                                </div>
-                            </div> <!-- single blog post -->
-                        </div>
-                        <div class="col-md-4">
-                            <div class="single-blog-post blog-grid-post related-post mt-30">
-                                <div class="blog-post-media">
-                                    <div class="blog-image">
-                                        <a href="blog-single-left-sidebar.html"><img src="assets/images/blog-3.jpg" alt="blog"></a>
+                                    <div class="blog-post-content">
+                                        <h4 class="blog-title"><a href="blog-single-left-sidebar.html">@item.Title</a></h4>
+                                        <ul class="blog-meta">
+                                            <li><a href="#"><i class="fas fa-user-circle"></i>@item.User.FullName</a></li>
+                                            <li><a href="#"><i class="fas fa-calendar-alt"></i>@item.Date</a></li>
+                                        </ul>
                                     </div>
-                                </div>
-                                <div class="blog-post-content">
-                                    <h4 class="blog-title"><a href="blog-single-left-sidebar.html">This is Third Post For XipBlog</a></h4>
-                                    <ul class="blog-meta">
-                                        <li><a href="#"><i class="fas fa-user-circle"></i> Admin</a></li>
-                                        <li><a href="#"><i class="fas fa-calendar-alt"></i> 24 April, 2020</a></li>
-                                    </ul>
-                                </div>
-                            </div> <!-- single blog post -->
-                        </div>
-                        <div class="col-md-4">
-                            <div class="single-blog-post blog-grid-post related-post mt-30">
-                                <div class="blog-post-media">
-                                    <div class="blog-image">
-                                        <a href="blog-single-left-sidebar.html"><img src="assets/images/blog-4.jpg" alt="blog"></a>
-                                    </div>
-                                </div>
-                                <div class="blog-post-content">
-                                    <h4 class="blog-title"><a href="blog-single-left-sidebar.html">This is Third Post For XipBlog</a></h4>
-                                    <ul class="blog-meta">
-                                        <li><a href="#"><i class="fas fa-user-circle"></i> Admin</a></li>
-                                        <li><a href="#"><i class="fas fa-calendar-alt"></i> 24 April, 2020</a></li>
-                                    </ul>
-                                </div>
-                            </div> <!-- single blog post -->
-                        </div>
+                                </div> <!-- single blog post -->
+                            </div>
+                        }
+
                     </div>
                 </div>
+
                 <div class="blog-single-comment">
                     <div class="blog-comments">
-                        <h4 class="comment-title">3 Comments</h4>
-
+                        <h4 class="comment-title">@ViewBag.comment.Count Comments</h4>
                         <ul class="comments-list">
-                            <li>
-                                <div class="single-comment d-sm-flex">
-                                    <div class="comment-author">
-                                        <img src="assets/images/comment-author.jpg" alt="author">
-                                    </div>
-                                    <div class="comment-content media-body">
-                                        <div class="comment-meta">
-                                            <h5 class="author-name">Admin</h5>
-                                            <span class="date">February 16, 2020 at 1:38 am</span>
+                            @foreach (var item in ViewBag.comment)
+                            {
+                                <li>
+                                    <div class="single-comment d-sm-flex">
+                                        <div class="comment-author">
+                                            <img src="" alt="author" width="50" height="50">
                                         </div>
-                                        <p>But I must explain to you how all this mistaken idea of denouncing pleasure</p>
-                                        <div class="comment-replay">
-                                            <a href="#">Replay</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <ul class="comments-replay">
-                                    <li>
-                                        <div class="single-comment d-sm-flex">
-                                            <div class="comment-author">
-                                                <img src="assets/images/comment-author.jpg" alt="author">
+                                        <div class="comment-content media-body">
+                                            <div class="comment-meta">
+                                                <h5 class="author-name">@item.User.FullName</h5>
+                                                <span class="date"><time>@item.Date</time></span>
                                             </div>
-                                            <div class="comment-content media-body">
-                                                <div class="comment-meta">
-                                                    <h5 class="author-name">Admin</h5>
-                                                    <span class="date">February 16, 2020 at 1:38 am</span>
-                                                </div>
-                                                <p>But I must explain to you how all this mistaken idea of denouncing pleasure</p>
+                                            <p>@item.Text</p>
+                                            @if (item.UserId == UserId)
+                                            {
                                                 <div class="comment-replay">
-                                                    <a href="#">Replay</a>
+                                                    <a asp-controller="Comment" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <div class="single-comment d-sm-flex">
-                                    <div class="comment-author">
-                                        <img src="assets/images/comment-author.jpg" alt="author">
-                                    </div>
-                                    <div class="comment-content media-body">
-                                        <div class="comment-meta">
-                                            <h5 class="author-name">Admin</h5>
-                                            <span class="date">February 16, 2020 at 1:38 am</span>
-                                        </div>
-                                        <p>But I must explain to you how all this mistaken idea of denouncing pleasure</p>
-                                        <div class="comment-replay">
-                                            <a href="#">Replay</a>
+                                            }
                                         </div>
                                     </div>
-                                </div>
-                            </li>
+                                </li>
+                            }
                         </ul>
                     </div>
                     <div class="blog-comment-form">
                         <h4 class="comment-title">Leave a Reply </h4>
                         <p>Your email address will not be published. Required fields are marked *</p>
                         <div class="row">
-                            <div class="col-md-12">
-                                <div class="single-form">
-                                    <label>Your Review:</label>
-                                    <textarea placeholder="Write a review"></textarea>
+
+                            <form asp-controller="Comment" asp-action="Create" method="post">
+                                <div class="col-md-12">
+                                    <div class="single-form">
+                                        <input type="hidden" name="BlogId" value="@Model.Id" />
+                                        <label>Your Review:</label>
+                                        <textarea name="Text" placeholder="Write a review" style="width:100%!important"></textarea>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="single-form">
-                                    <label>Name:</label>
-                                    <input type="text" placeholder="Name">
+                                <div class="col-md-12">
+                                    <div class="single-form">
+                                        <button type="submit" class="main-btn">Post Comment</button>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="single-form">
-                                    <label>Email:</label>
-                                    <input type="email" placeholder="Email">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="single-form">
-                                    <label>Website:</label>
-                                    <input type="email" placeholder="Email">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="single-form">
-                                    <button class="main-btn">Post Comment</button>
-                                </div>
-                            </div>
+                            </form>
+
                         </div>
                     </div>
                 </div>
@@ -235,44 +198,37 @@
 
                     <div class="sidebar-widget mt-30">
                         <h4 class="sidebar-title">Resent Post</h4>
-                        <div class="blog-sidebar-post">
-                            <div class="single-mini-post d-flex">
-                                <div class="post-thumb">
-                                    <a href="blog-single-left-sidebar.html"><img src="assets/images/blog-1.jpg" alt="blog"></a>
-                                </div>
-                                <div class="post-content media-body">
-                                    <h5 class="post-title"><a href="blog-single-left-sidebar.html">This is Secound Post For XipBlog</a></h5>
-                                    <span class="date">April 24, 2020</span>
-                                </div>
-                            </div>
-                            <div class="single-mini-post d-flex">
-                                <div class="post-thumb">
-                                    <a href="blog-single-left-sidebar.html"><img src="assets/images/blog-2.jpg" alt="blog"></a>
-                                </div>
-                                <div class="post-content media-body">
-                                    <h5 class="post-title"><a href="blog-single-left-sidebar.html">This is Secound Post For XipBlog</a></h5>
-                                    <span class="date">April 24, 2020</span>
-                                </div>
-                            </div>
-                            <div class="single-mini-post d-flex">
-                                <div class="post-thumb">
-                                    <a href="blog-single-left-sidebar.html"><img src="assets/images/blog-3.jpg" alt="blog"></a>
-                                </div>
-                                <div class="post-content media-body">
-                                    <h5 class="post-title"><a href="blog-single-left-sidebar.html">This is Secound Post For XipBlog</a></h5>
-                                    <span class="date">April 24, 2020</span>
-                                </div>
-                            </div>
-                            <div class="single-mini-post d-flex">
-                                <div class="post-thumb">
-                                    <a href="blog-single-left-sidebar.html"><img src="assets/images/blog-4.jpg" alt="blog"></a>
-                                </div>
-                                <div class="post-content media-body">
-                                    <h5 class="post-title"><a href="blog-single-left-sidebar.html">This is Secound Post For XipBlog</a></h5>
-                                    <span class="date">April 24, 2020</span>
+                        @foreach (var item in ViewBag.RecentBlogs)
+                        {
+                            <div class="blog-sidebar-post">
+                                <div class="single-mini-post d-flex">
+                                    <div class="post-thumb">
+                                        @foreach (var blog in ViewBag.photos)
+                                        {
+                                            if (blog.BlogId == item.Id && blog.ImageUrl != null)
+                                            {
+                                                <div class="gallery-item">
+                                                    <a asp-controller="Blog" asp-action="Details" asp-route-id="@item.Id"><img src="~/assets/images/@blog.ImageUrl" style="width:465px" height="342" alt="blog"></a>
+                                                </div>
+                                            }
+
+                                            if (blog.BlogId == item.Id && blog.VideoUrl != null)
+                                            {
+                                                <div class="blog-post-video">
+                                                    <iframe src="@blog.VideoUrl" encrypted-media" allowfullscreen="" width="152" height="90"></iframe>
+                                                </div>
+                                            }
+                                        }
+                                    </div>
+                                    <div class="post-content media-body">
+                                        <h5 class="post-title"><a asp-controller="Blog" asp-action="Details" asp-route-id="@item.Id">@item.Title</a></h5>
+                                        <span class="date">@item.Date</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        }
+
+
                     </div> <!-- sidebar widget -->
 
                     <div class="sidebar-widget mt-30">
