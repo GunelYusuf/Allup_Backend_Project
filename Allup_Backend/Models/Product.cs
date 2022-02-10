@@ -53,5 +53,7 @@ namespace Allup_Backend.Models
 
         public int Count { get; set; }
 
+        public bool IsDeleted { get; set; }
+
     }
 }

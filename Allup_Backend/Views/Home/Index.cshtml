@@ -1,6 +1,6 @@
 ﻿@model HomeVM
 @{
-    int ImageCount = 0;
+    @*int ImageCount = 0;*@
     int CategoryCount = 0;
     int ProductCount = 0;
 }
@@ -124,28 +124,13 @@
                                 <div class="single-product mt-30">
                                     <div class="product-image">
                                         <a asp-action="Index" asp-route-id="@product.Id">
+
+                                            <img class="first-image" src="~/assets/images/product/@product.Images.ElementAt(0).ImageUrl" alt="product">
+
                                             @if (product.Images.Count() > 1)
                                             {
-                                                @foreach (ProductImage image in product.Images)
-                                                {
-                                                    ImageCount++;
-                                                    @if (ImageCount < 2)
-                                                    {
-                                                        <img class="first-image" src="~/assets/images/product/@image.ImageUrl" style="width:150px;height:160px;" alt="product">
-
-                                                    }
-                                                    else
-                                                    {
-                                                        <img class="second-image" src="~/assets/images/product/@image.ImageUrl" style="width:150px;height:160px;" alt="product" />
-                                                        ImageCount = 0;
-                                                    }
-                                                }
+                                                <img class="first-image" src="~/assets/images/product/@product.Images.ElementAt(1).ImageUrl" alt="product">
                                             }
-                                            else
-                                            {
-                                                <img class="first-image" src="~/assets/images/product/@product.Images" style="width:150px;height:160px;" alt="product" />
-                                            }
-
 
                                         </a>
                                         <ul class="product-meta">

@@ -8634,7 +8634,7 @@
       "outputPath": "/Users/gunelyusubova/Projects/Allup_Backend/Allup_Backend/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/gunelyusubova/.config/NuGet/NuGet.Config"
+        "/Users/gunelyusubova/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
