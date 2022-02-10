@@ -143,7 +143,7 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // GET: BrandController/Delete/5
+        // GET Delete
         public async Task<IActionResult> Delete(int id)
         {
             Brand _brand = await _context.Brands.FirstOrDefaultAsync(x => x.Id == id);
@@ -151,10 +151,10 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
             return View(_brand);
         }
 
-        // POST: BrandController/Delete/5
+        // POST delete
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Delete(Brand brand)
+        public async Task<IActionResult> Delete(Brand brand)
         {
             Brand _brand = await _context.Brands.FirstOrDefaultAsync(x => x.Id == brand.Id);
             if (brand == null) return RedirectToAction("Delete");

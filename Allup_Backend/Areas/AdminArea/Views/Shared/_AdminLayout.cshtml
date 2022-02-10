@@ -162,16 +162,21 @@
                         </a>
                     </li>
                     <li class="nav-item nav-category">
+                        <a class="nav-link" asp-area="AdminArea" asp-controller="HomeSlider" asp-action="Index">
+                            Home Slider
+                        </a>
+                    </li>
+                    <li class="nav-item nav-category">
                         <a class="nav-link" asp-area="AdminArea" asp-controller="Product" asp-action="Index">
                             Products
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item nav-category">
                         <a class="nav-link" asp-area="AdminArea" asp-controller="Contact" asp-action="Index">
                             Contact
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item nav-category">
                         <a class="nav-link" asp-area="AdminArea" asp-controller="CompanySlider" asp-action="Index">
                             Company Sliders
                         </a>
@@ -284,6 +289,7 @@
     @RenderSection("CategoryScript", false)
     @RenderSection("BrandCreate", false)
     @RenderSection("ProductCreate", false)
+    @RenderSection("CreateHomeSliderCss", false)
     <!-- End custom js for this page -->
 </body>
 </html>

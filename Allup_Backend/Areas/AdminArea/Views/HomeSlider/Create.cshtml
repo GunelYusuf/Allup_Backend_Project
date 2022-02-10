@@ -1,0 +1,109 @@
+﻿@model HomeSlider
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Default form</h4>
+                    <p class="card-description"> Create Author Slider Form </p>
+                    <form class="forms-sample" method="Post" enctype="multipart/form-data">
+
+                        <div class="form-group">
+                            <label for="exampleInputName1">Select Product</label>
+                            <div class="container parent">
+                                <div class="row">
+                                    @for (int i = 1; i <= ViewBag.ProductList.Count; i++)
+                                    {
+                                        <div class='col text-center'>
+                                            <h6> @ViewBag.ProductList[i - 1].Name</h6>
+                                            <input type="radio" name="productId" id="@i" class="d-none imgbgchk" value="@ViewBag.ProductList[i-1].Id">
+                                            <label for="@i">
+                                                <img src="~/assets/images/product/@ViewBag.ProductList[i-1].Images[0].ImageUrl" alt="Image 4">
+                                                <div class="tick_container">
+                                                    <div class="tick"><i class="fa fa-check"></i></div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Title"></label>
+                            <textarea class="form-control" asp-for="Title" placeholder="Title"></textarea>
+                            <span class="text-danger" asp-validation-for="Title"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Description"></label>
+                            <textarea class="form-control" asp-for="Description" placeholder="Description"></textarea>
+                            <span class="text-danger" asp-validation-for="Description"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Photo"></label>
+                            <input asp-for="Photo" class="form-control" accept="image/*" placeholder="Name">
+                            <span asp-validation-for="Photo" class="text-danger"></span>
+                        </div>
+
+                        <button class="btn btn-primary">Submit</button>
+                        <button asp-action="Index" class="btn btn-warning"> Go Back</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section CreateHomeSliderCss{
+    <style>
+        .imgbgchk:checked + label > .tick_container {
+            opacity: 1;
+        }
+        /*         aNIMATION */
+        .imgbgchk:checked + label > img {
+            transform: scale(1.25);
+            opacity: 0.3;
+        }
+        .col img {
+            height: 100px;
+            width: 100%;
+            cursor: pointer;
+            transition: transform 1s;
+            object-fit: cover;
+        }
+
+        .col label {
+            overflow: hidden;
+            position: relative;
+        }
+
+.tick {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            padding: 6px 12px;
+            height: 40px;
+            width: 40px;
+            border-radius: 100%;
+        }
+        .tick_container {
+            transition: .5s ease;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            cursor: pointer;
+            text-align: center;
+        }
+        .parent > .row {
+            display: flex;
+            align-items: center;
+        }
+
+       
+    </style>
+}

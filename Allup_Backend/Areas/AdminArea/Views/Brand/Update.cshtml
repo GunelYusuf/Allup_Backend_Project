@@ -7,7 +7,7 @@
             <p class="card-description">
                 <a class="btn btn-primary" asp-controller="Brand" asp-action="Update">Update Brand</a>
             </p>
-            <form asp-action="Update">
+            <form asp-controller="Brand" asp-action="Update">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" asp-for="Id" />
                 <div class="form-group">
@@ -34,7 +34,7 @@
                 {
                     <div class="form-group form-check d-flex">
                         <label class="form-check-label">
-                            <input type="checkbox" checked class="form-check-input subcategory" name="subcategory" value="@item.Id" />@item.Category.Name
+                            <input type="checkbox" checked class="form-check-input subcategory" name="subcategory" value="@item.Category.Id" />@item.Category.Name
                         </label>
                     </div>
 
