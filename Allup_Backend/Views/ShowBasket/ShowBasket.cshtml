@@ -165,8 +165,8 @@
 {
     <script>$(".sub").click(function () {
         var dataO = {
-            id: $(this).attribute("data-id"),
-            change: $(this).attribute("class")
+            id: $(this).attr("data-id"),
+            change: $(this).attr("class")
         };
         $.ajax({
             type: "Post",
@@ -194,8 +194,8 @@
     })
     $(".add").click(function () {
         var dataO = {
-            id: $(this).attribute("data-id"),
-            change: $(this).attribute("class")
+            id: $(this).attr("data-id"),
+            change: $(this).attr("class")
         };
         $.ajax({
             type: "Post",

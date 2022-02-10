@@ -29,10 +29,10 @@
                                         <div class="blog-gallery">
                                             @foreach (var element in ViewBag.photos)
                                             {
-                                                if (element.BlogId == item.Id && element.PhotoUrl != null)
+                                                if (element.BlogId == item.Id && element.ImageUrl != null)
                                                 {
                                                     <div class="gallery-item">
-                                                        <a href="blog-single-left-sidebar.html"><img src="~/images/blog/@element.PhotoUrl" alt="blog"></a>
+                                                        <a href="blog-single-left-sidebar.html"><img src="~/images/blog/@element.ImageUrl" alt="blog"></a>
                                                     </div>
                                                 }
                                                 if (element.BlogId == item.Id && element.VideoUrl != null)
