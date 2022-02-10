@@ -32,7 +32,7 @@ namespace Allup_Backend.Controllers
             List<AuthorSlider> authorSliders = _context.AuthorSliders.ToList();
             List<Category> categories = _context.Categories.Where(c => c.IsFeatured == true).ToList();
             List<HomeSlider> homeSliders = _context.HomeSliders.Include(x => x.Product).ToList();
-            List<Product> products = _context.Products.Where(pr => pr.IsDeleted == false).Include(pro => pro.Images).ToList();
+            List<Product> products = _context.Products.Where(pr => pr.IsDeleted == false).Include(pro => pro.Images).Include(p => p.Campaign).Include(p => p.Brand).ToList();
 
             HomeVM homeVM = new HomeVM();
             homeVM.AuthorSliders = authorSliders;

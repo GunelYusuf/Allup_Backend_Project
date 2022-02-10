@@ -11,6 +11,7 @@ using Allup_Backend.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -39,7 +40,10 @@ namespace Allup_Backend.Controllers
             var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
             if (id == null) return RedirectToAction("Index", "Error");
-            Product product = await _context.Products.FindAsync(id);
+            Product product = await _context.Products.Include(p => p.Campaign)
+                 .Include(p => p.Brand)
+                 .Include(p => p.Images)
+                 .FirstOrDefaultAsync(p => p.Id == id);
             if (product == null) return RedirectToAction("Index", "Error");
             string basketCookie = Request.Cookies["basketCookie"];
             List<BasketProduct> basketProductList;
@@ -59,8 +63,12 @@ namespace Allup_Backend.Controllers
                 BasketProduct basketProduct = new BasketProduct
                 {
                     Name = product.Name,
+                    Id=product.Id,
+                    Discount = product.Campaign.Discount,
+                    ImageUrl =product.Images[0].ImageUrl,
                     Price = product.Price,
                     Count = 1,
+                    BrandId = product.BrandId,
                     UserId = userId
                 };
                 basketProductList.Add(basketProduct);
@@ -79,7 +87,7 @@ namespace Allup_Backend.Controllers
         {
             if (!User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Login", "Account");
             }
             string basketCookie = Request.Cookies["basketCookie"];
             List<BasketProduct> basketProductList = new List<BasketProduct>();
@@ -88,10 +96,14 @@ namespace Allup_Backend.Controllers
                 basketProductList = JsonConvert.DeserializeObject<List<BasketProduct>>(basketCookie);
                 foreach (var item in basketProductList)
                 {
-                    Product product = _context.Products.FirstOrDefault(p => p.Id == item.Id);
-                    //item.ImageUrl = product.ImageUrl;
+                    Product product = _context.Products.Include(p => p.ProductColors)
+                        .Include(p => p.Campaign)
+                        .Include(p => p.Brand)
+                        .Include(p => p.Images).FirstOrDefault(p => p.Id == item.Id);
                     item.Name = product.Name;
+                    item.ImageUrl = product.Images[0].ImageUrl;
                     item.Price = product.Price;
+                    item.Discount = product.Campaign.Discount;
 
                 }
                 Response.Cookies.Append("basketCookie", JsonConvert.SerializeObject(basketProductList), new CookieOptions { MaxAge = TimeSpan.FromMinutes(14) });

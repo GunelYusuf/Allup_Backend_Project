@@ -27,8 +27,9 @@ namespace Allup_Backend.Controllers
         public async Task<IActionResult> Detail(int? id)
         {
             var blog = await _context.Blogs.Include(x => x.BlogImage).FirstOrDefaultAsync(b => b.Id == id);
-            var user = await _userManager.FindByIdAsync(blog.UserId);
             var tags = await _context.ProductTags.Where(p => p.ProductId == blog.ProductId).Select(t => t.Tag).ToListAsync();
+            var user = await _userManager.FindByIdAsync(blog.UserId);
+           
             ViewBag.user = user.FullName;
             ViewBag.tags = tags;
             return View(blog);
@@ -37,7 +38,7 @@ namespace Allup_Backend.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            var blog = _context.Blogs.ToList();
+            var blog = _context.Blogs.Include(bu => bu.User).ToList();
             var photos = _context.BlogImages.ToList();
 
             ViewBag.photos = photos;
@@ -46,5 +47,6 @@ namespace Allup_Backend.Controllers
             return View(blog);
            
         }
+
     }
 }

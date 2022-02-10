@@ -13,7 +13,9 @@ namespace Allup_Backend.ViewModels
 
         public int Count { get; set; }
 
-        public int CategoryId { get; set; }
+        public int Discount { get; set; }
+
+        public int BrandId { get; set; }
 
         public string UserId { get; set; }
 
