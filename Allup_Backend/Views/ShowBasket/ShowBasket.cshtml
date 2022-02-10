@@ -155,12 +155,6 @@
             </div>
 
 
-
-
-
-
-
-
         </div>
     </div>
 </section>
@@ -191,6 +185,9 @@
                     $("#totalAmount").text(maxTotal);
 
                 }
+                else {
+                    alert("0 items cannot be purchased");
+                }
                
             }
         });
@@ -217,6 +214,10 @@
 
                     $("#total-amount").text(fulltotal);
                     $("#totalAmount").text(maxTotal);
+                }
+                else
+                {
+                    alert("not much can be obtained from this product");
                 }
                
 

@@ -197,6 +197,48 @@ namespace Allup_Backend.Controllers
             await _context.SaveChangesAsync();
         }
 
+        public IActionResult BasketCount([FromForm] int id, string change)
+        {
+            if (!User.Identity.IsAuthenticated) return RedirectToAction("Login", "Account");
+
+            var UserId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            string basketCookie = Request.Cookies["basketCookie"];
+
+            List<BasketProduct> basketProducts = new List<BasketProduct>();
+
+            List<BasketProduct> basketProductList = JsonConvert.DeserializeObject<List<BasketProduct>>(basketCookie);
+            Product product = _context.Products.Find(id);
+            var totalcount = 0;
+            foreach (var basketProduct in basketProducts)
+            {
+                if (basketProduct.Id == id && basketProduct.UserId == UserId)
+                {
+                    if (change == "sub" && (basketProduct.Count) > 1)
+                    {
+                        basketProduct.Count--;
+                        totalcount += basketProduct.Count;
+
+                    }
+                    if (change == "add" && basketProduct.Count != product.Quantity)
+                    {
+                        basketProduct.Count++;
+                        totalcount += basketProduct.Count;
+                    }
+                    if (totalcount != 0) basketProduct.Count = totalcount;
+                }
+
+            }
+            Response.Cookies.Append("basketCookie", JsonConvert.SerializeObject(basketProducts), new CookieOptions { MaxAge = TimeSpan.FromMinutes(14) });
+            
+            if (totalcount != 0)
+            {
+                return Ok(totalcount);
+            }
+            return Ok("error message");
+
+        }
+       
 
         // GET: /<controller>/
         public IActionResult Index()

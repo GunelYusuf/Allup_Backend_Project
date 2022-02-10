@@ -139,6 +139,10 @@
                                             <li><a href="#"><i class="icon ion-android-options"></i></a></li>
                                             <li><a data-toggle="modal" data-target="#productQuickModal" href="#"><i class="icon ion-android-open"></i></a></li>
                                         </ul>
+                                        @if (product.Campaign.Discount != 0)
+                                        {
+                                            <span class="discount-product">-@product.Campaign.Discount%</span>
+                                        }
                                     </div>
                                     <div class="product-content">
                                         <ul class="product-rating">
@@ -148,9 +152,34 @@
                                             <li><i class="fas fa-star"></i></li>
                                             <li><i class="fas fa-star"></i></li>
                                         </ul>
-                                        <h4 class="product-title"><a href="single-product.html">@product.Name</a></h4>
+                                        @{
+                                            string ShortDesc =product.Description;
+                                            if (ShortDesc.Length > 54)
+                                            {
+                                                ShortDesc = ShortDesc.Substring(0, 54) + "...";
+                                            }
+                                        }
+                                        @{
+                                            double salePrice = 0;
+                                            @if (product.Campaign.Discount != 0)
+                                            {
+                                                salePrice = Convert.ToDouble(product.Price - ((product.Price) * (product.Campaign.Discount) / 100));
+                                            }
+
+                                        }
+                                        <h4 class="product-title"><a href="single-product.html">@ShortDesc</a></h4>
                                         <div class="product-price">
-                                            <span class="price-sale">$@product.Price</span>
+
+                                            @if (product.Campaign.Discount == 0)
+                                            {
+                                                <span class="price-sale">€@product.Price</span>
+                                            }
+                                            @if (product.Campaign.Discount != 0)
+                                            {
+                                                <span class="regular-price ">€@product.Price</span>
+                                                <span class="price-sale">€@salePrice</span>
+                                            }
+                                           
                                         </div>
                                     </div>
                                 </div> <!-- single product -->
