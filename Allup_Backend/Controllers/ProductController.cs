@@ -26,8 +26,14 @@ namespace Allup_Backend.Controllers
 
         public IActionResult Index()
         {
-            List<Product> products = _context.Products.Include(p => p.BrandId).Take(8).ToList();
-            return View(products);
+                List<Product> product = _context.Products.Include(p=>p.Images)
+                .Include(b => b.Brand)
+                .Include(c => c.Campaign)
+                .Include(pc => pc.ProductColors)
+                .Include(pt => pt.ProductTags).ToList();
+             
+
+            return View(product);
         }
 
 
@@ -35,18 +41,12 @@ namespace Allup_Backend.Controllers
         {
             IEnumerable<CommentProduct> comments = _context.CommentProducts.Where(c => c.ProductId == id);
 
-            Product product = _context.Products.Include(b => b.BrandId).Include(i => i.Images).ThenInclude(pi => pi.ImageUrl).FirstOrDefault(p => p.Id == id);
-            ViewBag.ProductID = product.Id;
-            var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            ViewBag.UserID = userId;
-            Product products = new Product
-            {
-                Name = product.Name,
-                Price = product.Price,
-                BrandId = product.BrandId,
-                CommentProducts = comments,
-            };
-            return View(products);
+            Product product = _context.Products.Include(b => b.Brand).Include(i => i.Images).Include(p => p.Campaign).Include(p => p.ProductColors).Include(p => p.ProductTags).FirstOrDefault(p => p.Id == id);
+
+            ViewBag.tags = _context.ProductTags.Include(p => p.Tag).Where(p => p.ProductId == id).ToList();
+
+            return View(product);
+
 
         }
     }
