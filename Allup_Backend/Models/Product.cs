@@ -51,7 +51,7 @@ namespace Allup_Backend.Models
 
         public List<ProductImage> Images { get; set; }
 
-       
+        public int Count { get; set; }
 
     }
 }

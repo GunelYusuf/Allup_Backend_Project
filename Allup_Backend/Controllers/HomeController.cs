@@ -41,5 +41,11 @@ namespace Allup_Backend.Controllers
 
             return View(homeVM);
         }
+
+        public IActionResult GetSession()
+        {
+            string session = HttpContext.Session.GetString("Software");
+            return Content(session);
+        }
     }
 }
