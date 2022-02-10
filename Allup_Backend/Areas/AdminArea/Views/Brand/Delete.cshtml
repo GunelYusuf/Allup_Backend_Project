@@ -1,0 +1,21 @@
+﻿@model Brand
+<h2>Delete</h2>
+<h4>Brand</h4>
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <p>@Model.Name</p>
+         </div>
+        <div class="col-6">
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="Id" />
+                <input type="submit" value="Delete" class="btn btn-outline-danger" /> |
+
+            </form>
+        </div>
+        <div class="col-6">
+            <a asp-controller="Brand" asp-action="Index" class="btn btn-warning" style="color:white">Go Back</a>
+        </div>
+    </div>
+</div>

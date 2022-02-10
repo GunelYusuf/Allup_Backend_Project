@@ -48,6 +48,8 @@
     <None Remove="Areas\AdminArea\Views\Brand\" />
     <None Remove="Areas\AdminArea\Views\Sale\" />
     <None Remove="Areas\AdminArea\Views\Product\" />
+    <None Remove="Areas\AdminArea\Views\Blog\" />
+    <None Remove="Views\Blog\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -89,6 +91,8 @@
     <Folder Include="Areas\AdminArea\Views\Brand\" />
     <Folder Include="Areas\AdminArea\Views\Sale\" />
     <Folder Include="Areas\AdminArea\Views\Product\" />
+    <Folder Include="Areas\AdminArea\Views\Blog\" />
+    <Folder Include="Views\Blog\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.0" />
@@ -109,5 +113,6 @@
     <Content Remove="wwwroot\" />
     <Content Remove="wwwroot\assets\admin\" />
     <Content Remove="wwwroot\assets\template\" />
+    <Content Remove="Areas\AdminArea\Views\Shared\_ProductCreatePa.cshtml" />
   </ItemGroup>
 </Project>

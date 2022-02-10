@@ -1,0 +1,155 @@
+﻿@model Product
+
+<h1>Edit</h1>
+
+<h4>Product</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <div>
+            @foreach (var item in ViewBag.photos)
+            {
+                if (item.IsMain == true)
+                {
+                    <h3>Ismain</h3>
+                }
+                <img src="~/assets/images/product/@item.ImageUrl" style="width:100px;height:100px" alt="Alternate Text" />
+
+
+            }
+        </div>
+        <form asp-action="Update" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tax" class="control-label"></label>
+                <input asp-for="Tax" class="form-control" />
+                <span asp-validation-for="Tax" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductCode" class="control-label"></label>
+                <input asp-for="ProductCode" class="form-control" />
+                <span asp-validation-for="ProductCode" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Availability" /> Availability
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Quantity" class="control-label"></label>
+                <input asp-for="Quantity" class="form-control" />
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsFeatured" /> Is Featured
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="BrandId" class="control-label">Brand</label>
+                <select asp-for="BrandId" class="form-control" asp-items="ViewBag.BrandId"></select>
+                <span asp-validation-for="BrandId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Category</label>
+                <select id="change" class="form-control" name="categoryid">
+                    <option selected value="@ViewBag.category.Id">@ViewBag.category.Name</option>
+
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label">Colors</label>
+            </div>
+            @foreach (var item in ViewBag.checkColor)
+            {
+                <div class="form-group form-check d-flex">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" name="colorId" checked value="@item.Id" />@item.Name
+                    </label>
+                </div>
+            }
+            @foreach (var item in ViewBag.noneColor)
+            {
+                <div class="form-group form-check d-flex">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" name="colorId" value="@item.Id" />@item.Name
+                    </label>
+                </div>
+            }
+            <div class="form-group">
+                <label class="control-label">Tags</label>
+            </div>
+            @foreach (var item in ViewBag.noneTag)
+            {
+                <div class="form-group form-check d-flex">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" name="tagId" value="@item.Id" />@item.Name
+                    </label>
+                </div>
+            }
+            @foreach (var item in ViewBag.checkTag)
+            {
+                <div class="form-group form-check d-flex">
+                    <label class="form-check-label">
+                        <input type="checkbox" checked class="form-check-input " name="tagId" value="@item.Id" />@item.Name
+                    </label>
+                </div>
+
+            }
+            <div class="form-group">
+                <label class="control-label">Campaign</label>
+                <select asp-for="CampaignId" class="form-control" asp-items="ViewBag.CampaignId"></select>
+                <span asp-validation-for="CampaignId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Photos"></label>
+                <input asp-for="Photos" class="form-control" accept="image/*" placeholder="Name">
+                <span asp-validation-for="Photos" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+@section ProductCreate {
+    <script>$("#BrandId").change(function () {
+            const change = $("#BrandId option:selected").val()
+            $.ajax({
+                url: "/Admin/Product/CallCategory?id=" + change,
+                method: "get",
+                success: function (res) {
+                    $("#change option").next().remove()
+                    $("#change").append(res)
+                }
+            })
+        });</script>
+}

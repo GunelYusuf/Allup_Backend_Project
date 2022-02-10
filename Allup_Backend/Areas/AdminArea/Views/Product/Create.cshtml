@@ -42,12 +42,12 @@
                         <div class="form-group">
                             <label class="form-check-label">
                                 <input class="form-check-input" asp-for="Availability" /> Availability
-                              </label>
+                            </label>
                         </div>
                         <div class="form-group form-check">
                             <label class="form-check-label">
-                                <input class="form-check-input" asp-for="IsFeatured" /> Is Featured 
-                              </label>
+                                <input class="form-check-input" asp-for="IsFeatured" /> Is Featured
+                            </label>
                         </div>
                         <div class="form-group">
                             <label asp-for="BrandId" class="control-label"></label>
@@ -55,19 +55,20 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label">Category</label>
-                            <select id="change" class="form-control" name="categoryId">
+                            <select id="change" class="form-control" name="categoryid">
                                 <option selected value="0">Select Category</option>
                             </select>
                         </div>
 
+
                         @foreach (var item in ViewBag.Tags)
-                         {
+                        {
                             <div class="form-group form-check d-flex">
                                 <label class="form-check-label">
                                     <input type="checkbox" class="form-check-input subcategory" name="tagId" value="@item.Id" />@item.Name
                                 </label>
                             </div>
-                         }
+                        }
                         @foreach (var item in ViewBag.Colors)
                         {
                             <div class="form-group form-check d-flex">
@@ -95,11 +96,14 @@
         </div>
     </div>
 </div>
-@section CreateProduct{
+@section Scripts{
+    <partial name="_ValidationPartial">
+}
+@section ProductCreate {
     <script>$("#BrandId").change(function () {
             const change = $("#BrandId option:selected").val()
             $.ajax({
-                url: "CallBackCategory?id=" + change,
+                url: "CallCategory?id=" + change,
                 method: "get",
                 success: function (res) {
                     $("#change option").next().remove()
@@ -107,7 +111,5 @@
                 }
             })
         });</script>
-    }
-@section Scripts{
-    <partial name="_Validation"></partial>
 }
+

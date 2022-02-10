@@ -24,7 +24,6 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
         }
         public IActionResult Index()
         {
-
             List<Sales> sales = _context.Sales.Include(p => p.ProductSales).ThenInclude(p => p.Product).Include(u => u.AppUser).ToList();
             return View(sales);
         }

@@ -18,7 +18,7 @@ namespace Allup_Backend.Models
 
         public bool IsDeleted { get; set; }
 
-        public Category Parent { get; set; }
+        public Category Parent{ get; set; }
 
         public List<Category> Children { get; set; }
 

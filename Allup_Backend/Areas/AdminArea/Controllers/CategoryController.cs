@@ -54,7 +54,7 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
 
        
         // Get Create
-        public ActionResult Create()
+        public IActionResult Create()
         {
             List<Category> Parent = _context.Categories.Where(p => p.IsMain == true && p.IsDeleted == false).ToList();
             ViewBag.Category = Parent;
@@ -65,7 +65,7 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(Category category)
+        public async Task<IActionResult> Create(Category category)
         {
             bool isExist = _context.Categories.Any(c => c.Name.ToLower().Trim() == category.Name.ToLower().Trim());
 
@@ -143,7 +143,7 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
     
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(int? id, Category category)
+        public async Task<IActionResult> Update(int? id, Category category)
         {
             bool isExist = _context.Categories.Any(c => c.Name.ToLower().Trim() == category.Name.ToLower().Trim());
             Category newCategory = await _context.Categories.FindAsync(id);
@@ -152,6 +152,7 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
             if (isExist && !(newCategory.Name.ToLower() == category.Name.ToLower().Trim()))
             {
                 ModelState.AddModelError("Name", "The category with this name already exists");
+                await _context.SaveChangesAsync();
                 View();
             }
 
@@ -159,6 +160,7 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
             {
                 newCategory.Parent = category.Parent;
                 newCategory.Name = category.Name;
+                return RedirectToAction(nameof(Index));
 
             }
             if (category.Photo != null)
@@ -182,7 +184,7 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
                 {
                     System.IO.File.Delete(path);
                 }
-                string fileName = await category.Photo.SaveImageAsync(_env.WebRootPath, "images/");
+                string fileName = await category.Photo.SaveImageAsync(_env.WebRootPath, "assets/images/");
                 newCategory.IsFeatured = category.IsFeatured;
                 newCategory.Name = category.Name;
                 newCategory.ImageUrl = fileName;
@@ -196,7 +198,7 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
 
 
         // Get Delete
-        public async Task<ActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null) return NotFound();
             Category dbCategory = await _context.Categories.FindAsync(id);
@@ -207,7 +209,7 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
         // Post Delete
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Delete(int? id, Category category)
+        public async Task<IActionResult> Delete(int? id, Category category)
         {
             if (id == null) return NotFound();
             Category dbCategory = await _context.Categories.FindAsync(id);
@@ -221,7 +223,7 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
                 }
                 else
                 {
-                    string path = Path.Combine(_env.WebRootPath, "images/", dbCategory.ImageUrl);
+                    string path = Path.Combine(_env.WebRootPath, "assets/images/", dbCategory.ImageUrl);
                     if (System.IO.File.Exists(path))
                     {
                         System.IO.File.Delete(path);

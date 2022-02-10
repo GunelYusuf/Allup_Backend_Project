@@ -5,9 +5,9 @@
         <div class="card-body">
             <h4 class="card-title">Hoverable Table</h4>
             <p class="card-description">
-                <a class="btn btn-primary" asp-controller="Category" asp-action="Create">Update Brand</a>
+                <a class="btn btn-primary" asp-controller="Brand" asp-action="Update">Update Brand</a>
             </p>
-            <form asp-action="Edit">
+            <form asp-action="Update">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" asp-for="Id" />
                 <div class="form-group">
@@ -24,7 +24,7 @@
                     </div>
                     <div class="form-group form-check d-flex">
                         <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input subcategory" name="subcategory" value="@item.Id" /> <br />@item.Name
+                            <input type="checkbox" class="form-check-input subcategory" name="subcategory" value="@item.Id" />@item.Name
                         </label>
                     </div>
 
@@ -34,7 +34,7 @@
                 {
                     <div class="form-group form-check d-flex">
                         <label class="form-check-label">
-                            <input type="checkbox" checked class="form-check-input subcategory" name="subcategory" value="@item.Id" /> <br />§@item.Category.Name
+                            <input type="checkbox" checked class="form-check-input subcategory" name="subcategory" value="@item.Id" />@item.Category.Name
                         </label>
                     </div>
 
@@ -48,6 +48,6 @@
 </div>
 
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+@section Scripts{
+    <partial name="_ValidationPartial">
 }

@@ -58,5 +58,7 @@ namespace Allup_Backend.DAL
         public DbSet<ProductTag> ProductTags { get; set; }
 
         public DbSet<ProductRelated> ProductRelateds { get; set; }
+
+        public DbSet<HomeSlider> HomeSliders{ get; set; }
     }
 }

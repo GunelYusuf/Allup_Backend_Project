@@ -30,8 +30,6 @@ namespace Allup_Backend.Models
 
         public bool IsFeatured { get; set; }
 
-        public List<ProductImage> Images { get; set; }
-
         [NotMapped]
         [Required]
 
@@ -46,5 +44,14 @@ namespace Allup_Backend.Models
         public int BrandId { get; set; }
 
         public IEnumerable<CommentProduct> CommentProducts { get; set; }
+
+        public List<ProductColor> ProductColors { get; set; }
+
+        public List<ProductTag> ProductTags{ get; set; }
+
+        public List<ProductImage> Images { get; set; }
+
+       
+
     }
 }

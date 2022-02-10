@@ -27,9 +27,14 @@ namespace Allup_Backend.Controllers
         public  IActionResult Index()
         {
             List<AuthorSlider> authorSliders = _context.AuthorSliders.ToList();
+            List<Category> categories = _context.Categories.Where(c => c.IsFeatured == true).ToList();
+
+
 
             HomeVM homeVM = new HomeVM();
             homeVM.AuthorSliders = authorSliders;
+            homeVM.categories = categories;
+            ViewBag.FeatCategories = categories.Where(c => c.IsFeatured == true);
 
             return View(homeVM);
         }

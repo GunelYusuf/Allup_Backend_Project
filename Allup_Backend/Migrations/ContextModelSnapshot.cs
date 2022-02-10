@@ -198,6 +198,9 @@ namespace Allup_Backend.Migrations
                     b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
@@ -205,6 +208,8 @@ namespace Allup_Backend.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
 
                     b.HasIndex("UserId");
 
@@ -406,6 +411,32 @@ namespace Allup_Backend.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Contacts");
+                });
+
+            modelBuilder.Entity("Allup_Backend.Models.HomeSlider", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("HomeSliders");
                 });
 
             modelBuilder.Entity("Allup_Backend.Models.Product", b =>
@@ -782,6 +813,12 @@ namespace Allup_Backend.Migrations
 
             modelBuilder.Entity("Allup_Backend.Models.Blog", b =>
                 {
+                    b.HasOne("Allup_Backend.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Allup_Backend.Models.AppUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
@@ -835,6 +872,15 @@ namespace Allup_Backend.Migrations
                         .HasForeignKey("UserId");
                 });
 
+            modelBuilder.Entity("Allup_Backend.Models.HomeSlider", b =>
+                {
+                    b.HasOne("Allup_Backend.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Allup_Backend.Models.Product", b =>
                 {
                     b.HasOne("Allup_Backend.Models.Brand", "Brand")
@@ -853,13 +899,13 @@ namespace Allup_Backend.Migrations
             modelBuilder.Entity("Allup_Backend.Models.ProductColor", b =>
                 {
                     b.HasOne("Allup_Backend.Models.Color", "Color")
-                        .WithMany()
+                        .WithMany("ProductColors")
                         .HasForeignKey("ColorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Allup_Backend.Models.Product", "Product")
-                        .WithMany()
+                        .WithMany("ProductColors")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -892,13 +938,13 @@ namespace Allup_Backend.Migrations
             modelBuilder.Entity("Allup_Backend.Models.ProductTag", b =>
                 {
                     b.HasOne("Allup_Backend.Models.Product", "Product")
-                        .WithMany()
+                        .WithMany("ProductTags")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Allup_Backend.Models.Tag", "Tag")
-                        .WithMany()
+                        .WithMany("ProductTags")
                         .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
