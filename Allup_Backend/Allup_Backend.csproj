@@ -51,6 +51,7 @@
     <None Remove="Areas\AdminArea\Views\Blog\" />
     <None Remove="Views\Blog\" />
     <None Remove="Areas\AdminArea\Views\HomeSlider\" />
+    <None Remove="Views\ShowBasket\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -95,6 +96,7 @@
     <Folder Include="Areas\AdminArea\Views\Blog\" />
     <Folder Include="Views\Blog\" />
     <Folder Include="Areas\AdminArea\Views\HomeSlider\" />
+    <Folder Include="Views\ShowBasket\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.0" />

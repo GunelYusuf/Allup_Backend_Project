@@ -1,8 +1,11 @@
 ﻿<Properties StartupConfiguration="{FA002A4D-51FE-4424-BB6B-7D33C5AA81D9}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Allup_Backend/Controllers/BasketController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Allup_Backend/Views/ShowBasket/ShowBasket.cshtml">
     <Files>
       <File FileName="Allup_Backend/Controllers/HomeController.cs" Line="49" Column="10" />
-      <File FileName="Allup_Backend/Controllers/BasketController.cs" Line="41" Column="31" />
+      <File FileName="Allup_Backend/Controllers/BasketController.cs" Line="90" Column="56" />
+      <File FileName="Allup_Backend/Views/Shared/Components/Header/Default.cshtml" Line="527" Column="40" />
+      <File FileName="Allup_Backend/Views/ShowBasket/ShowBasket.cshtml" Line="54" Column="74" />
+      <File FileName="Allup_Backend/ViewModels/BasketProduct.cs" Line="20" Column="35" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -17,15 +20,14 @@
                   </Node>
                 </Node>
               </Node>
-              <Node name="Controllers" expanded="True">
-                <Node name="BasketController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
               <Node name="DAL" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="ViewModels" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="Blog" expanded="True" />
-                <Node name="Home" expanded="True" />
+                <Node name="ShowBasket" expanded="True">
+                  <Node name="ShowBasket.cshtml" selected="True" />
+                </Node>
               </Node>
             </Node>
           </Node>
