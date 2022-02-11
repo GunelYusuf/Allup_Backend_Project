@@ -394,39 +394,40 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
             Product dbProduct = await _context.Products.FindAsync(id);
             if (dbProduct == null) return NotFound();
 
-            List<ProductColor> productColors = await _context.ProductColors.ToListAsync();
-            foreach (var item in productColors)
+            var productColors = await _context.ProductColors.Where(c => c.ProductId == id).ToListAsync();
+            foreach (var color in productColors)
             {
-                _context.ProductColors.Remove(item);
+                _context.ProductColors.Remove(color);
                 await _context.SaveChangesAsync();
             }
 
-            List<ProductTag> productTags = await _context.ProductTags.ToListAsync();
-            foreach (var item in productTags)
+            var  productTags = await _context.ProductTags.Where(t => t.ProductId==id).ToListAsync();
+            foreach (var tag in productTags)
             {
-                _context.ProductTags.Remove(item);
+                _context.ProductTags.Remove(tag);
                 await _context.SaveChangesAsync();
             }
 
-            List<ProductRelated> productRelateds = await _context.ProductRelateds.ToListAsync();
-            foreach (var item in productRelateds)
-            {
-                _context.ProductRelateds.Remove(item);
-                await _context.SaveChangesAsync();
-            }
-            var oldPhoto = _context.ProductImages.Where(p => p.ProductId == id).ToList();
+            var productRelateds = await _context.ProductRelateds.FirstOrDefaultAsync(r => r.BrandId == dbProduct.BrandId && r.ProductId == id);
+            _context.ProductRelateds.Remove(productRelateds);
 
-            foreach (var item in oldPhoto)
+
+            if (dbProduct.Photos!=null)
             {
-                string path = Path.Combine(_env.WebRootPath, "assets/images/product/", item.ImageUrl);
-                if (System.IO.File.Exists(path))
+                var oldPhoto = _context.ProductImages.Where(p => p.ProductId == dbProduct.Id).ToList();
+
+                foreach (var item in oldPhoto)
                 {
-                    System.IO.File.Delete(path);
+                    string path = Path.Combine(_env.WebRootPath, "assets/images/product/", item.ImageUrl);
+                    if (System.IO.File.Exists(path))
+                    {
+                        System.IO.File.Delete(path);
+                    }
+                    _context.ProductImages.Remove(item);
+                    await _context.SaveChangesAsync();
                 }
-                _context.ProductImages.Remove(item);
-                await _context.SaveChangesAsync();
-            }
 
+            }
             _context.Products.Remove(dbProduct);
             await _context.SaveChangesAsync();
 

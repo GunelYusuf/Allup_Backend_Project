@@ -1,9 +1,10 @@
 ﻿<Properties StartupConfiguration="{FA002A4D-51FE-4424-BB6B-7D33C5AA81D9}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Allup_Backend/Controllers/HomeController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Allup_Backend/Areas/AdminArea/Controllers/ProductController.cs">
     <Files>
-      <File FileName="Allup_Backend/Views/Blog/Index.cshtml" Line="24" Column="1" />
+      <File FileName="Allup_Backend/Views/Blog/Index.cshtml" Line="170" Column="36" />
       <File FileName="Allup_Backend/Areas/AdminArea/Views/Product/Delete.cshtml" Line="24" Column="39" />
       <File FileName="Allup_Backend/Controllers/HomeController.cs" Line="31" Column="1" />
+      <File FileName="Allup_Backend/Areas/AdminArea/Controllers/ProductController.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -12,14 +13,15 @@
             <Node name="Allup_Backend" expanded="True">
               <Node name="Areas" expanded="True">
                 <Node name="AdminArea" expanded="True">
+                  <Node name="Controllers" expanded="True">
+                    <Node name="ProductController.cs" selected="True" />
+                  </Node>
                   <Node name="Views" expanded="True">
                     <Node name="Product" expanded="True" />
                   </Node>
                 </Node>
               </Node>
-              <Node name="Controllers" expanded="True">
-                <Node name="HomeController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
               <Node name="DAL" expanded="True" />
               <Node name="ViewModels" expanded="True" />
               <Node name="Views" expanded="True">
