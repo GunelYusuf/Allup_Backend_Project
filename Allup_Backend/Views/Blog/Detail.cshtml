@@ -28,18 +28,18 @@
                         <h4 class="blog-title">@Model.Title</h4>
                         <ul class="blog-meta">
                             <li><a href="#"><i class="fas fa-user-circle"></i> Admin</a></li>
-                            <li><a href="#"><i class="fas fa-calendar-alt"></i> 24 April, 2020</a></li>
+                            <li><a href="#"><i class="fas fa-calendar-alt"></i>@Model.Date</a></li>
                         </ul>
-                        @Model.Description
-                        <blockquote class="blockquote">
-                            @Model.Description
-                        </blockquote>
-                        @Model.Description
+                        <p> @Html.Raw(Model.Description)</p>
                     </div>
                     <div class="blog-single-tags-share d-sm-flex justify-content-between">
                         <div class="blog-single-tags d-flex">
                             <span class="title">Tags: </span>
                             <ul class="tag-list">
+                                @foreach (var item in ViewBag.tags)
+                                {
+                                    <li><a>@item.Name</a></li>
+                                }
                             </ul>
                         </div>
                         <div class="blog-single-share d-flex">

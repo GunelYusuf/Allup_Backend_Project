@@ -58,14 +58,14 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
         public async Task<IActionResult> Create(Blog blog, string videourl)
         {
             if (blog.Photos == null && videourl == null) return NotFound();
-            Blog newBlog = new Blog()
-            {
-                Title = blog.Title,
-                Description = blog.Description,
-                ProductId = blog.ProductId,
-                Date = blog.Date,
-                UserId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value,
-            };
+               Blog newBlog = new Blog();
+
+               newBlog.Title = blog.Title;
+               newBlog.Description = blog.Description;
+               newBlog.ProductId = blog.ProductId;
+               newBlog.Date = blog.Date;
+               newBlog.UserId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            
             await _context.Blogs.AddAsync(newBlog);
             await _context.SaveChangesAsync();
 
@@ -73,8 +73,10 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
             if (videourl != null)
             {
                 BlogImage blogImage = new BlogImage();
+
                 blogImage.VideoUrl = videourl;
                 blogImage.BlogId = newBlog.Id;
+
                 await _context.BlogImages.AddAsync(blogImage);
                 await _context.SaveChangesAsync();
             }
@@ -104,6 +106,7 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
 
                     blogImage.ImageUrl = fileName;
                     blogImage.BlogId = newBlog.Id;
+
                     await _context.BlogImages.AddAsync(blogImage);
                     await _context.SaveChangesAsync();
                 }

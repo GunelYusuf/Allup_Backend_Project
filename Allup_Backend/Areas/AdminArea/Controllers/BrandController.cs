@@ -26,10 +26,6 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
             return View(brands);
         }
 
-        public IActionResult Details(int id)
-        {
-            return View();
-        }
 
         //Get Create
         public IActionResult Create()
@@ -39,6 +35,7 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
 
             return View();
         }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -53,13 +50,14 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
 
             }
 
-            Brand newBrand = new Brand();
-            newBrand.Name = brand.Name;
-            await _context.Brands.AddAsync(newBrand);
-            await _context.SaveChangesAsync();
-
             if (subcategories != null)
             {
+
+                Brand newBrand = new Brand();
+                newBrand.Name = brand.Name;
+                await _context.Brands.AddAsync(newBrand);
+                await _context.SaveChangesAsync();
+
                 foreach (var subcategory in subcategories)
                 {
                     CategoryBrand categoryBrands = new CategoryBrand();
@@ -68,9 +66,10 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
                     await _context.AddAsync(categoryBrands);
                     await _context.SaveChangesAsync();
                 }
-
+                return RedirectToAction(nameof(Index));
             }
-            return RedirectToAction(nameof(Index));
+
+            return NotFound();
         }
 
         //Get Update
@@ -112,22 +111,22 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
 
             List<int> checkedCategory = _context.CategoryBrands.Where(c => c.BrandId == newBrand.Id).Select(i => i.CategoryId).ToList();
 
-            List<int> addedCategory = subcategory.Except(checkedCategory).ToList();
+            List<int> addCategory = subcategory.Except(checkedCategory).ToList();
             List<int> removedCategory = checkedCategory.Except(subcategory).ToList();
 
-            int addedCategoryLength = addedCategory.Count();
+            int addCategoryLength = addCategory.Count();
             int removedCategoryLength = removedCategory.Count();
-            int FullLength = addedCategoryLength + removedCategoryLength;
+            int FullLength = addCategoryLength + removedCategoryLength;
 
             newBrand.Name = brand.Name;
 
             for (int i = 1; i <= FullLength; i++)
             {
-                if (addedCategoryLength >= i)
+                if (addCategoryLength >= i)
                 {
                     CategoryBrand categoryBrand = new CategoryBrand();
                     categoryBrand.BrandId = newBrand.Id;
-                    categoryBrand.CategoryId = addedCategory[i - 1];
+                    categoryBrand.CategoryId = addCategory[i - 1];
                     await _context.CategoryBrands.AddAsync(categoryBrand);
                     await _context.SaveChangesAsync();
                 }
@@ -163,11 +162,12 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
             List<CategoryBrand> categoryBrand = await _context.CategoryBrands.ToListAsync();
             foreach (var item in categoryBrand)
             {
-
-                _context.CategoryBrands.Remove(item);
-                await _context.SaveChangesAsync();
-
-
+                CategoryBrand deletedBrand = await _context.CategoryBrands.FirstOrDefaultAsync(c => c.BrandId == brand.Id);
+                if (deletedBrand != null)
+                {
+                    _context.CategoryBrands.Remove(deletedBrand);
+                    await _context.SaveChangesAsync();
+                }
             }
             _context.Brands.Remove(_brand);
             await _context.SaveChangesAsync();
@@ -175,8 +175,10 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-
-
+        public IActionResult Details(int id)
+        {
+            return View();
+        }
 
 
 

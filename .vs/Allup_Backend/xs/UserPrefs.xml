@@ -1,10 +1,9 @@
 ﻿<Properties StartupConfiguration="{FA002A4D-51FE-4424-BB6B-7D33C5AA81D9}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Allup_Backend/Areas/AdminArea/Controllers/BrandController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Allup_Backend/Controllers/HomeController.cs">
     <Files>
-      <File FileName="Allup_Backend/Views/Blog/Detail.cshtml" Line="1" Column="1" />
       <File FileName="Allup_Backend/Views/Blog/Index.cshtml" Line="24" Column="1" />
       <File FileName="Allup_Backend/Areas/AdminArea/Views/Product/Delete.cshtml" Line="24" Column="39" />
-      <File FileName="Allup_Backend/Areas/AdminArea/Controllers/BrandController.cs" Line="172" Column="44" />
+      <File FileName="Allup_Backend/Controllers/HomeController.cs" Line="31" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -13,30 +12,19 @@
             <Node name="Allup_Backend" expanded="True">
               <Node name="Areas" expanded="True">
                 <Node name="AdminArea" expanded="True">
-                  <Node name="Controllers" expanded="True">
-                    <Node name="BrandController.cs" selected="True" />
-                  </Node>
                   <Node name="Views" expanded="True">
-                    <Node name="Blog" expanded="True" />
-                    <Node name="Brand" expanded="True" />
-                    <Node name="Category" expanded="True" />
-                    <Node name="HomeSlider" expanded="True" />
                     <Node name="Product" expanded="True" />
-                    <Node name="Shared" expanded="True" />
                   </Node>
                 </Node>
               </Node>
-              <Node name="Controllers" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="HomeController.cs" selected="True" />
+              </Node>
               <Node name="DAL" expanded="True" />
               <Node name="ViewModels" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="Blog" expanded="True" />
                 <Node name="Home" expanded="True" />
-              </Node>
-              <Node name="wwwroot" expanded="True">
-                <Node name="assets" expanded="True">
-                  <Node name="images" expanded="True" />
-                </Node>
               </Node>
             </Node>
           </Node>
