@@ -1,0 +1,27 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Delete";
+}
+<h2>Delete</h2>
+<h4>Category</h4>
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <img src="~/assets/images/@Model.Images" style="width:50px; height:50px" />
+            <p>@Model.Name</p>
+            <p>@Model.Description</p>
+            <p>@Model.Brand</p>
+        </div>
+        <div class="col-6">
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="Id" />
+                <input type="submit" value="Delete" class="btn btn-outline-danger" /> |
+
+            </form>
+        </div>
+        <div class="col-6">
+            <a asp-controller="Product" asp-action="Index" class="btn btn-warning" style="color:white">Go Back</a>
+        </div>
+    </div>
+</div>

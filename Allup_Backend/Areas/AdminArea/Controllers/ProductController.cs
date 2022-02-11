@@ -36,8 +36,6 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
         }
 
 
-
-        // GET: ProductController/Details/5
         public ActionResult Details(int id)
         {
             return View();
@@ -50,7 +48,7 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
             return PartialView("_ProductCreatePartial", categories);
         }
 
-        // GET: ProductController/Create
+        //Get Create
         public ActionResult Create()
         {
 
@@ -68,7 +66,7 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
             return View();
         }
 
-        // POST: ProductController/Create
+        // Post Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Product product, int categoryid, int[] tagId, int[] colorId)
@@ -158,7 +156,7 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // GET: ProductController/Edit/5
+        // Get Update
         public async Task<IActionResult> Update(int? id)
         {
             if (id == null) return NotFound();
@@ -327,8 +325,6 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
                             return RedirectToAction("Index");
                         }
 
-
-
                         ProductImage productImage = new ProductImage();
 
                         string fileName = await photo.SaveImageAsync(_env.WebRootPath, "assets/images/product/");
@@ -376,6 +372,79 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null) return NotFound();
+            Product dbProduct = await _context.Products.FindAsync(id);
+            if (dbProduct == null) return NotFound();
+            return View(dbProduct);
+        }
+
+
+        // Post Delete
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int? id, Product product)
+        {
+            if (id == null) return NotFound();
+            Product dbProduct = await _context.Products.FindAsync(id);
+            if (dbProduct == null) return NotFound();
+
+            List<int> checkColor = _context.ProductColors.Where(c => c.ProductId == dbProduct.Id).Select(c => c.ColorId).ToList();
+            List<int> checkTag = _context.ProductTags.Where(p => p.ProductId == dbProduct.Id).Select(t => t.TagId).ToList();
+
+            int chekedAllColor = checkColor.Count();
+
+            for (int i = 1; i <= chekedAllColor; i++)
+            {
+               ProductColor productColor = await _context.ProductColors.FirstOrDefaultAsync(c => c.ColorId == dbProduct.Id);
+               _context.ProductColors.Remove(productColor);
+               await _context.SaveChangesAsync();
+                
+            }
+
+
+            //foreach (var item in productColors)
+            //{
+            //    _context.ProductColors.Remove(item);
+            //    await _context.SaveChangesAsync();
+            //}
+
+            //List<ProductTag> productTags = await _context.ProductTags.ToListAsync();
+            //foreach (var item in productTags)
+            //{
+            //    _context.ProductTags.Remove(item);
+            //    await _context.SaveChangesAsync();
+            //}
+
+            //List<ProductRelated> productRelateds = await _context.ProductRelateds.ToListAsync();
+            //foreach (var item in productRelateds)
+            //{
+            //    _context.ProductRelateds.Remove(item);
+            //    await _context.SaveChangesAsync();
+            //}
+
+            var oldPhoto = _context.ProductImages.Where(p => p.ProductId == id).ToList();
+
+            foreach (var item in oldPhoto)
+            {
+                string path = Path.Combine(_env.WebRootPath, "assets/images/product/", item.ImageUrl);
+                if (System.IO.File.Exists(path))
+                {
+                    System.IO.File.Delete(path);
+                }
+                _context.ProductImages.Remove(item);
+                await _context.SaveChangesAsync();
+            }
+
+            _context.Products.Remove(dbProduct);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
 
     }
 }
