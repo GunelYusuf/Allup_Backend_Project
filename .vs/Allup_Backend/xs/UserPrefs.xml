@@ -1,8 +1,8 @@
 ﻿<Properties StartupConfiguration="{FA002A4D-51FE-4424-BB6B-7D33C5AA81D9}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Allup_Backend/Startup.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Allup_Backend/Controllers/BasketController.cs">
     <Files>
-      <File FileName="Allup_Backend/Controllers/HomeController.cs" Line="31" Column="1" />
-      <File FileName="Allup_Backend/Startup.cs" Line="58" Column="1" />
+      <File FileName="Allup_Backend/Controllers/HomeController.cs" Line="49" Column="10" />
+      <File FileName="Allup_Backend/Controllers/BasketController.cs" Line="41" Column="31" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -17,14 +17,16 @@
                   </Node>
                 </Node>
               </Node>
-              <Node name="Controllers" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="BasketController.cs" selected="True" />
+              </Node>
               <Node name="DAL" expanded="True" />
+              <Node name="Models" expanded="True" />
               <Node name="ViewModels" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="Blog" expanded="True" />
                 <Node name="Home" expanded="True" />
               </Node>
-              <Node name="Startup.cs" selected="True" />
             </Node>
           </Node>
         </State>
