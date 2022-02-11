@@ -51,17 +51,17 @@ namespace Allup_Backend.Areas.AdminArea.Controllers
         //Get Create
         public ActionResult Create()
         {
-
+            var campaign = new SelectList(_context.Campaigns.OrderBy(l => l.Discount)
+            .ToDictionary(us => us.Id, us => us.Discount), "Key", "Value");
+            ViewBag.Campaign = campaign;
             var brands = new SelectList(_context.Brands.OrderBy(l => l.Name)
             .ToDictionary(us => us.Id, us => us.Name), "Key", "Value");
             ViewBag.Brand = brands;
-            var campaign = new SelectList(_context.Campaigns.OrderBy(l => l.Discount)
-             .ToDictionary(us => us.Id, us => us.Discount), "Key", "Value");
-            ViewBag.Campaign = campaign;
             var colors = _context.Colors.ToList();
             var tags = _context.Tags.ToList();
-            ViewBag.Tags = tags;
             ViewBag.Colors = colors;
+            ViewBag.Tags = tags;
+           
 
             return View();
         }

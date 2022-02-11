@@ -3,6 +3,7 @@ using System.Linq;
 using Allup_Backend.DAL;
 using Allup_Backend.Models;
 using Allup_Backend.ViewModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -26,6 +27,8 @@ namespace Allup_Backend.Controllers
 
         public  IActionResult Index()
         {
+            HttpContext.Session.SetString("AllUp", "E-commerce");
+
             List<AuthorSlider> authorSliders = _context.AuthorSliders.ToList();
             List<Category> categories = _context.Categories.Where(c => c.IsFeatured == true).ToList();
 
